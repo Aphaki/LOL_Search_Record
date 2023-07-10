@@ -7,6 +7,9 @@
 
 import Foundation
 
+// + UIImage
+import UIKit
+
 class NetworkManager {
     static let shared = NetworkManager()
     
@@ -59,8 +62,8 @@ class NetworkManager {
     
     func requestMatchList(urlBaseHead: UrlHeadPoint, puuid: String, start: Int = 0 , count: Int = 20) async throws -> [String] {
         let dataTask = ApiClient.shared.session
-                    .request(Router.match(urlBaseHead: urlBaseHead, puuid: puuid, start: start, count: count))
-                    .serializingDecodable([String].self)
+            .request(Router.match(urlBaseHead: urlBaseHead, puuid: puuid, start: start, count: count))
+            .serializingDecodable([String].self)
         if let response = await dataTask.response.response {
             print("NetworkManager - requestMatchList() - StatusCode: \(response.statusCode)")
         } else {
@@ -77,30 +80,30 @@ class NetworkManager {
     }
     
     func requestMatchInfo(urlBaseHead: UrlHeadPoint, matchId: String) async throws -> MatchInfo  {
-           let dataTask = ApiClient.shared.session
-               .request(Router.matchInfo(urlBaseHead: urlBaseHead, matchId: matchId))
-               .serializingDecodable(MatchInfo.self)
-
-           
-           if let response = await dataTask.response.response {
-               
-               print("NetworkManager - requestMatchInfo() - Status Code: \(response.statusCode), url: \(String(describing: response.url?.debugDescription))")
-               if response.statusCode == 429 {
-                  dataTask.resume()
-               }
-           } else {
-               
-               print("NetworkManager - requestMatchInfo() - response: nil")
-           }
-           
-           do {
-               let value = try await dataTask.value
-               return value
-           } catch let error {
-               debugPrint(error.localizedDescription)
-               throw error
-           }
-       }
+        let dataTask = ApiClient.shared.session
+            .request(Router.matchInfo(urlBaseHead: urlBaseHead, matchId: matchId))
+            .serializingDecodable(MatchInfo.self)
+        
+        
+        if let response = await dataTask.response.response {
+            
+            print("NetworkManager - requestMatchInfo() - Status Code: \(response.statusCode), url: \(String(describing: response.url?.debugDescription))")
+            if response.statusCode == 429 {
+                dataTask.resume()
+            }
+        } else {
+            
+            print("NetworkManager - requestMatchInfo() - response: nil")
+        }
+        
+        do {
+            let value = try await dataTask.value
+            return value
+        } catch let error {
+            debugPrint(error.localizedDescription)
+            throw error
+        }
+    }
     
     func requestMatchInfos(urlBaseHead: UrlHeadPoint, matchIds: [String]) async throws -> [MatchInfo] {
         let value =
@@ -122,36 +125,52 @@ class NetworkManager {
         }
     }
     
-//    func requestInGameSpectator(urlBaseHead: UrlHeadPoint, encryptedSummonerId: String) async throws -> Spectator {
-//           let dataTask =
-//           ApiClient.shared.session
-//               .request(Router.inGameInfo(urlBaseHead: urlBaseHead, encryptedSummonerId: encryptedSummonerId))
-//               .serializingDecodable(Spectator.self)
-//
-//           if let response = await dataTask.response.response {
-//
-//               print("NetworkManager - requestInGameSpectator() - Status Code: \(response.statusCode), url: \(String(describing: response.url?.debugDescription))")
-//               if response.statusCode == 404 {
-//
-//                   delegate?.noIngameError()
-//
-//               }
-//
-//           } else {
-//
-//               print("NetworkManager - requestInGameSpectator() - response: nil")
-//           }
-//
-//           do {
-//               let value = try await dataTask.value
-//               return value
-//           } catch let error {
-//               debugPrint(error.localizedDescription)
-//               throw error
-//           }
-//       }
+    func requestUrlImage(urlString: String) throws -> UIImage {
+        guard let url = URL(string: urlString) else { throw NetworkError.unvalidUrl }
+        var downloadedImg = UIImage()
+        let dataTask =
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let safeData = data else { return }
+            guard let img = UIImage(data: safeData) else { return }
+            downloadedImg = img
+        }
+        return downloadedImg
+    }
     
+    //    func requestInGameSpectator(urlBaseHead: UrlHeadPoint, encryptedSummonerId: String) async throws -> Spectator {
+    //           let dataTask =
+    //           ApiClient.shared.session
+    //               .request(Router.inGameInfo(urlBaseHead: urlBaseHead, encryptedSummonerId: encryptedSummonerId))
+    //               .serializingDecodable(Spectator.self)
+    //
+    //           if let response = await dataTask.response.response {
+    //
+    //               print("NetworkManager - requestInGameSpectator() - Status Code: \(response.statusCode), url: \(String(describing: response.url?.debugDescription))")
+    //               if response.statusCode == 404 {
+    //
+    //                   delegate?.noIngameError()
+    //
+    //               }
+    //
+    //           } else {
+    //
+    //               print("NetworkManager - requestInGameSpectator() - response: nil")
+    //           }
+    //
+    //           do {
+    //               let value = try await dataTask.value
+    //               return value
+    //           } catch let error {
+    //               debugPrint(error.localizedDescription)
+    //               throw error
+    //           }
+    //       }
 }
+enum NetworkError: Error {
+    case unvalidUrl, unvalidData ,unvalidImg
+}
+
+    
 
 protocol NetworkManagerDelegate {
     func noSummonerError()
