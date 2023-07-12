@@ -165,7 +165,28 @@ class NetworkManager {
     //               throw error
     //           }
     //       }
+    
+    // 이미지 다운로드
+    func downloadImage(urlStr: String) -> UIImage? {
+        guard let url = URL(string: urlStr) else {
+            print("NetworkManager - URL 이미지 다운로드중 유효하지 않은 URL")
+            return nil
+        }
+        var imgData = Data()
+        let dataTask =
+        URLSession.shared.dataTask(with: url) { data, _, _ in
+            guard let safeData = data else {
+                print("NetworkManager - 이미지 데이터 없음")
+                return }
+            imgData = safeData
+        }
+        let uiImage = UIImage(data: imgData)
+        return uiImage
+    }
 }
+
+
+
 enum NetworkError: Error {
     case unvalidUrl, unvalidData ,unvalidImg
 }

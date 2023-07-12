@@ -169,6 +169,16 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="assist" destination="3uq-85-5ei" id="KKr-vY-NfL"/>
+                <outlet property="champImg" destination="V70-Cf-co0" id="uUM-1d-O1C"/>
+                <outlet property="death" destination="snV-e5-qI0" id="bkO-Fd-65i"/>
+                <outlet property="kill" destination="d0w-nq-EbQ" id="CRe-8T-vya"/>
+                <outlet property="spellOne" destination="z16-B6-SdL" id="gP2-eh-olm"/>
+                <outlet property="spellTwo" destination="Umo-rV-hG8" id="E2j-V4-SB9"/>
+                <outlet property="summonerName" destination="1kc-Qe-duz" id="eCC-7h-2WZ"/>
+                <outlet property="winLabel" destination="nvV-GO-DVF" id="duU-mG-sUz"/>
+            </connections>
             <point key="canvasLocation" x="9.9236641221374047" y="49.295774647887328"/>
         </tableViewCell>
     </objects>

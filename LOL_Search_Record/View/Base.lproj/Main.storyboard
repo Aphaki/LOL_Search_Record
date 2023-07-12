@@ -171,6 +171,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="p6z-g5-XpN"/>
+                    <connections>
+                        <outlet property="icon" destination="5Sb-Vu-auT" id="fD4-Yb-xHE"/>
+                        <outlet property="name" destination="7VQ-uL-Rqt" id="NhZ-Qw-raX"/>
+                        <outlet property="summaryTable" destination="jAB-ZL-xdu" id="Kie-cQ-r16"/>
+                        <outlet property="tierImg" destination="rPH-oI-l3F" id="u0E-vI-ni5"/>
+                        <outlet property="tierText" destination="KvP-gS-uKf" id="pOh-9f-fZK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hYE-Im-Wyc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
