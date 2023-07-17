@@ -21,7 +21,6 @@ class MatchSummaryCell: UITableViewCell {
     @IBOutlet weak var death: UILabel!
     @IBOutlet weak var assist: UILabel!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -32,5 +31,4 @@ class MatchSummaryCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

@@ -8,6 +8,21 @@
 import Foundation
 
 class MainVM {
-    private(set) var searchedSummoners: [DetailSummonerInfo] = []
+    
+    private(set) var searchedDetailInfo: DetailSummonerInfo?
+    
+    private(set) var urlBaseHead: UrlHeadPoint = .kr
+    
+    private var service = Service()
+    
+    
+    
+    func searchSummonerInfo(urlBaseHead: UrlHeadPoint, name: String) {
+        Task {
+            let searchedSummonerDetail = try await service.saveSearchedSummonerDetail(urlBase: urlBaseHead, name: name)
+            self.searchedDetailInfo = searchedSummonerDetail
+        }
+    }
+    
     
 }

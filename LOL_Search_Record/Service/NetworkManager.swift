@@ -15,14 +15,13 @@ class NetworkManager {
     
     var delegate: NetworkManagerDelegate?
     
-    // 소환사명 입력 -> 소환사 정보
+    // SUMMONER-V4 - 소환사명 입력 -> 소환사 정보
     func requestSummonerInfo(urlBaseHead: UrlHeadPoint, name: String) async throws -> SummonerInfo {
         let dataTask =
         ApiClient.shared.session
             .request(Router.summoner(urlBaseHead: urlBaseHead, name: name))
             .serializingDecodable(SummonerInfo.self)
         if let response = await dataTask.response.response {
-            
             print("NetworkManager - requestSummonerInfo() - Status Code: \(response.statusCode)")
             if response.statusCode == 404 {
                 delegate?.noSummonerError()
@@ -40,11 +39,11 @@ class NetworkManager {
         }
     }
     
-    // encrytedSummonerId 입력 -> 리그 정보
-    func requestLeaguesInfo(urlBaseHead: UrlHeadPoint, encrytedSummonerId: String) async throws -> [League] {
+    // LEAGUE-V4 - encrytedSummonerId 입력 -> 리그 정보
+    func requestLeaguesInfo(urlBaseHead: UrlHeadPoint, encryptedSummonerId: String) async throws -> [League] {
         let dataTask =
         ApiClient.shared.session
-            .request(Router.league(urlBaseHead: urlBaseHead, encryptedSummonerId: encrytedSummonerId))
+            .request(Router.league(urlBaseHead: urlBaseHead, encryptedSummonerId: encryptedSummonerId))
             .serializingDecodable([League].self)
         if let response = await dataTask.response.response {
             print("NetworkManager - requestLeaguesInfo() - Status code: \(response.statusCode)")
@@ -59,7 +58,7 @@ class NetworkManager {
             throw error
         }
     }
-    
+    // MATCH-V4
     func requestMatchList(urlBaseHead: UrlHeadPoint, puuid: String, start: Int = 0 , count: Int = 20) async throws -> [String] {
         let dataTask = ApiClient.shared.session
             .request(Router.match(urlBaseHead: urlBaseHead, puuid: puuid, start: start, count: count))
@@ -79,6 +78,7 @@ class NetworkManager {
         }
     }
     
+    // MATCH-V4
     func requestMatchInfo(urlBaseHead: UrlHeadPoint, matchId: String) async throws -> MatchInfo  {
         let dataTask = ApiClient.shared.session
             .request(Router.matchInfo(urlBaseHead: urlBaseHead, matchId: matchId))
@@ -105,6 +105,7 @@ class NetworkManager {
         }
     }
     
+    // MATCH-V4
     func requestMatchInfos(urlBaseHead: UrlHeadPoint, matchIds: [String]) async throws -> [MatchInfo] {
         let value =
         try await withThrowingTaskGroup(of: MatchInfo.self, body: { group in
@@ -166,6 +167,8 @@ class NetworkManager {
     //           }
     //       }
     
+    
+    
     // 이미지 다운로드
     func downloadImage(urlStr: String) -> UIImage? {
         guard let url = URL(string: urlStr) else {
@@ -196,4 +199,6 @@ enum NetworkError: Error {
 protocol NetworkManagerDelegate {
     func noSummonerError()
     func noIngameError()
+    func isLoadingTrue()
+    func isLoadingFalse()
 }

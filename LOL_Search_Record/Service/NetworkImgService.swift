@@ -39,6 +39,5 @@ class NetworkImgService {
         } catch {
             print("NetworkImgService - 네트워크 이미지 다운로드 중 에러")
         }
-      
     }
 }

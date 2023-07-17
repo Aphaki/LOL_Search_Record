@@ -15,6 +15,8 @@ class SummonerVC: UIViewController {
     @IBOutlet weak var name: UILabel!
     
     @IBOutlet weak var summaryTable: UITableView!
+    
+    var summonerInfo: DetailSummonerInfo?
     var detailMatchs: [DetailSummonerInfo] = []
     
     override func viewDidLoad() {
@@ -24,16 +26,20 @@ class SummonerVC: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func loadiconImage() {
+        guard let summonerInfo = summonerInfo else {
+            print("SummonerVC - loadiconImage() : summonerInfo is nil")
+            return
+        }
+        let imgName = summonerInfo.icon.iconIntToString()
+        let urlString = imgName.toProfileiconUrlString()
+        
+        icon.loadImage(from: urlString, folderName: "profileicon", imgName: imgName)
     }
-    */
-
+    func loadTierImage() {
+        guard let summonerInfo = summonerInfo else { return }
+        tierImg.image = UIImage(named: summonerInfo.tier)
+    }
 }
 
 extension SummonerVC: UITableViewDataSource {

@@ -4,15 +4,12 @@
 //
 //  Created by Sy Lee on 2023/07/10.
 //
-
-import Foundation
-
 import UIKit
 
 class LocalFileManager {
     static let shared = LocalFileManager()
     
-    init() { }
+//    init() { }
     
     func saveImage(image: UIImage, folderName: String, imgName: String) {
         createFolderIfNeed(folderName: folderName)
@@ -44,7 +41,7 @@ class LocalFileManager {
         if !FileManager.default.fileExists(atPath: folderURL.path) {
             do {
                 try FileManager.default.createDirectory(at: folderURL, withIntermediateDirectories: true)
-            } catch let error {
+            } catch {
                 print("디렉토리 생성중 에러: \(error)")
             }
         }
