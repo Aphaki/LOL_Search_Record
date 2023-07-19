@@ -23,8 +23,22 @@ class MainVC: UIViewController {
         super.viewDidLoad()
         self.summonerSearchBar.delegate = self
         self.searchedSummoners.delegate = self
+        NotificationCenter.default.addObserver(self, selector: #selector(handleDataNotification(_:)), name: NSNotification.Name("UrlHead"), object: nil)
+       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         self.location.title = urlHead.nationString.uppercased()
     }
+    
+    @objc func handleDataNotification(_ notification: Notification) {
+            if let receivedData = notification.object as? UrlHeadPoint {
+                self.urlHead = receivedData
+                print("MainVC - receivedData \(receivedData)")
+            }
+        }
+    
+    
 }
 
 
