@@ -13,14 +13,22 @@ class MainVC: UIViewController {
     
     @IBOutlet weak var searchedSummoners: UITableView!
     
+    @IBOutlet weak var location: UIBarButtonItem!
+    
     private var vm = MainVM()
+    
+    var urlHead: UrlHeadPoint = .kr
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.summonerSearchBar.delegate = self
         self.searchedSummoners.delegate = self
+        self.location.title = urlHead.nationString.uppercased()
     }
 }
+
+
+
 
 extension MainVC: UISearchBarDelegate {
     
@@ -33,6 +41,7 @@ extension MainVC: UISearchBarDelegate {
         if summonerName == "" {
             let alertController = UIAlertController(title: "검색어 에러", message: "소환사 이름을 입력해주세요.", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "확인", style: .cancel)
+            alertController.addAction(alertAction)
             present(alertController, animated: true)
         } else {
             vm.searchSummonerInfo(urlBaseHead: vm.urlBaseHead, name: summonerName)

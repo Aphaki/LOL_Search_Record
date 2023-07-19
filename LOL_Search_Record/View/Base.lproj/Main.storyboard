@@ -74,8 +74,16 @@
                             <constraint firstItem="ACp-z9-Nyu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="5" id="v0T-ee-auc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="suu-IU-k0Q"/>
+                    <navigationItem key="navigationItem" id="suu-IU-k0Q">
+                        <barButtonItem key="rightBarButtonItem" title="Kr" style="done" id="r1t-je-6sn">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="sHJ-DB-eJu" kind="show" id="C19-Bd-ZH6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="location" destination="r1t-je-6sn" id="rUg-6h-SHI"/>
                         <outlet property="searchedSummoners" destination="FjX-Ko-NAq" id="8Wg-ap-elF"/>
                         <outlet property="summonerSearchBar" destination="ACp-z9-Nyu" id="Ih5-7S-gAd"/>
                         <segue destination="bWM-KB-K5S" kind="show" identifier="GoToSummonerView" id="K3H-q8-QrP"/>
@@ -84,6 +92,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1990.0763358778624" y="3.5211267605633805"/>
+        </scene>
+        <!--Select LocationVC-->
+        <scene sceneID="PNr-Cf-AIF">
+            <objects>
+                <viewController id="sHJ-DB-eJu" customClass="SelectLocationVC" customModule="LOL_Search_Record" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OLt-28-VYf">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="j9d-j0-zrA">
+                                <rect key="frame" x="36.666666666666657" y="291" width="320" height="270.33333333333326"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6OY-oy-KCt">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
+                                    </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ktl-7C-ZBW">
+                                        <rect key="frame" x="127.33333333333334" y="236" width="65.333333333333343" height="34.333333333333314"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="SAVE" cornerStyle="large">
+                                            <backgroundConfiguration key="background">
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </backgroundConfiguration>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="tapSaveBtn:" destination="sHJ-DB-eJu" eventType="touchUpInside" id="gI7-z2-UvW"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ktl-7C-ZBW" firstAttribute="top" secondItem="6OY-oy-KCt" secondAttribute="bottom" constant="20" id="0sj-zh-bSD"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="IRv-Ud-n4s"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="j9d-j0-zrA" firstAttribute="centerX" secondItem="OLt-28-VYf" secondAttribute="centerX" id="RKE-cd-fsG"/>
+                            <constraint firstItem="j9d-j0-zrA" firstAttribute="centerY" secondItem="OLt-28-VYf" secondAttribute="centerY" id="w7N-4J-G76"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="RZM-wl-O0w"/>
+                    <connections>
+                        <outlet property="locationPicker" destination="6OY-oy-KCt" id="S1M-xu-liX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fEV-hw-QLa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2938" y="-693"/>
         </scene>
         <!--SummonerVC-->
         <scene sceneID="IO9-2a-h6F">
@@ -191,6 +249,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tSL-q1-ffG">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
