@@ -23,12 +23,7 @@ struct DetailSummonerInfo: Identifiable {
     let summonerInfo: SummonerInfo
     let leagueInfos: [League]
     let matchInfos: [MatchInfo]
+    let mySummonerMatchInfos: [Participant]
     var isBookMark: Bool = false
 }
 
-struct MostChamp: Identifiable {
-    let id = UUID()
-    let championName: String
-    let winningRate: Int
-    let kda: Double
-}

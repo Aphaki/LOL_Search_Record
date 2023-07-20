@@ -52,7 +52,6 @@ class Service {
     func saveSearchedSummonerDetail(urlBase: UrlHeadPoint, name: String) async throws -> DetailSummonerInfo{
         let searchedSummonerDetail =
         try await fetchAndChangeToDetail(urlBase: urlBase, name: name)
-        
         return searchedSummonerDetail
     }
     
@@ -154,7 +153,8 @@ class Service {
                                      totalKda: totalKda,
                                      summonerInfo: aSummonerInfo,
                                      leagueInfos: fetchLeaguesInfo,
-                                     matchInfos: matchInfos)
+                                     matchInfos: matchInfos,
+                                     mySummonerMatchInfos: mySummonerMatchInfos)
         
         return detailSummonerInfo
         

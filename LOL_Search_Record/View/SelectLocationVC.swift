@@ -27,11 +27,6 @@ class SelectLocationVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     
     @IBAction func tapSaveBtn(_ sender: Any) {
         
-//        if let rootVC = navigationController?.viewControllers.first as? MainVC {
-//            print("SelectLocationVC - ")
-//            rootVC.urlHead = urlHeadPoint ?? .kr
-//        }
-        
         let changedHeadPoint = urlHeadPoint ?? .kr
         
         print("SelectLocationVC - \(String(describing: changedHeadPoint)) ")

@@ -36,6 +36,7 @@
 		7FC986DD2A52D37400F8F3C7 /* ApiLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC986DC2A52D37400F8F3C7 /* ApiLogger.swift */; };
 		7FC986DF2A52D3A100F8F3C7 /* BaseInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC986DE2A52D3A100F8F3C7 /* BaseInterceptor.swift */; };
 		7FC986E12A52D44B00F8F3C7 /* UrlHeadPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC986E02A52D44B00F8F3C7 /* UrlHeadPoint.swift */; };
+		7FEC5C022A68E794000186A7 /* MostChamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEC5C012A68E794000186A7 /* MostChamp.swift */; };
 		7FFC6E8D2A498FE000565579 /* Caprasimo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FFC6E8C2A498FE000565579 /* Caprasimo-Regular.ttf */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		7FC986DC2A52D37400F8F3C7 /* ApiLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiLogger.swift; sourceTree = "<group>"; };
 		7FC986DE2A52D3A100F8F3C7 /* BaseInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInterceptor.swift; sourceTree = "<group>"; };
 		7FC986E02A52D44B00F8F3C7 /* UrlHeadPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlHeadPoint.swift; sourceTree = "<group>"; };
+		7FEC5C012A68E794000186A7 /* MostChamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostChamp.swift; sourceTree = "<group>"; };
 		7FFC6E8C2A498FE000565579 /* Caprasimo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Caprasimo-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				7FC986D12A52CE1600F8F3C7 /* DetailSummonerInfo.swift */,
+				7FEC5C012A68E794000186A7 /* MostChamp.swift */,
 				7FC986CE2A52CD3200F8F3C7 /* API Response */,
 			);
 			path = Model;
@@ -302,6 +305,7 @@
 				7F9433FC2A5BD5AF007F8E7D /* LocalFileManager.swift in Sources */,
 				7F65553C2A45A5B10028AE52 /* AppDelegate.swift in Sources */,
 				7F870EBC2A5EA38000E0AE94 /* SummonerVC.swift in Sources */,
+				7FEC5C022A68E794000186A7 /* MostChamp.swift in Sources */,
 				7F1C986A2A61145200E00A08 /* String.swift in Sources */,
 				7F9433F82A5B9C04007F8E7D /* NetworkManager.swift in Sources */,
 				7F65553E2A45A5B10028AE52 /* SceneDelegate.swift in Sources */,

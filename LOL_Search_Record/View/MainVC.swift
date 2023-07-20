@@ -49,22 +49,35 @@ extension MainVC: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         // 다음 화면
         
-        guard let summonerName = summonerSearchBar.text else {
-            print("summonerName is nil")
-            return }
-        if summonerName == "" {
+//        guard let summonerName = summonerSearchBar.text else {
+//            print("summonerName is nil")
+//            return }
+//        if summonerName == "" {
+//            let alertController = UIAlertController(title: "검색어 에러", message: "소환사 이름을 입력해주세요.", preferredStyle: .alert)
+//            let alertAction = UIAlertAction(title: "확인", style: .cancel)
+//            alertController.addAction(alertAction)
+//            present(alertController, animated: true)
+//        } else {
+//            vm.searchSummonerInfo(urlBaseHead: urlHead, name: summonerName)
+//            let data = vm.searchedDetailInfo
+//
+//        }
+        guard let summonerName = summonerSearchBar.text, !summonerName.isEmpty else {
             let alertController = UIAlertController(title: "검색어 에러", message: "소환사 이름을 입력해주세요.", preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "확인", style: .cancel)
             alertController.addAction(alertAction)
             present(alertController, animated: true)
-        } else {
-            vm.searchSummonerInfo(urlBaseHead: vm.urlBaseHead, name: summonerName)
+            return
         }
+        vm.searchSummonerInfo(urlBaseHead: urlHead, name: summonerName)
+        let summonerVC = SummonerVC()
+        summonerVC.summonerInfo = vm.searchedDetailInfo
+        navigationController?.pushViewController(summonerVC, animated: true)
         
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        
+//    }
 }
 
 extension MainVC: UITableViewDataSource, UITableViewDelegate {
