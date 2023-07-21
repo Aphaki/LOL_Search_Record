@@ -21,6 +21,15 @@ class MatchSummaryCell: UITableViewCell {
     @IBOutlet weak var death: UILabel!
     @IBOutlet weak var assist: UILabel!
     
+    
+    @IBOutlet weak var item0: UIImageView!
+    @IBOutlet weak var item1: UIImageView!
+    @IBOutlet weak var item2: UIImageView!
+    @IBOutlet weak var item3: UIImageView!
+    @IBOutlet weak var item4: UIImageView!
+    @IBOutlet weak var item5: UIImageView!
+    @IBOutlet weak var item6: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

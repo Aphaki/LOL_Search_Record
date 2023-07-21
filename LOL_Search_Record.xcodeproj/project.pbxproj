@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		7F1C986A2A61145200E00A08 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1C98692A61145200E00A08 /* String.swift */; };
 		7F1C986C2A61217100E00A08 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1C986B2A61217100E00A08 /* Int.swift */; };
+		7F622BF82A69F6C300B2CBDA /* summoner.json in Resources */ = {isa = PBXBuildFile; fileRef = 7F622BF72A69F6C300B2CBDA /* summoner.json */; };
+		7F622BFA2A69F72200B2CBDA /* DictionaryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F622BF92A69F72200B2CBDA /* DictionaryStore.swift */; };
+		7F622BFC2A69F7F200B2CBDA /* SummonerSpells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F622BFB2A69F7F200B2CBDA /* SummonerSpells.swift */; };
 		7F65553C2A45A5B10028AE52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F65553B2A45A5B10028AE52 /* AppDelegate.swift */; };
 		7F65553E2A45A5B10028AE52 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F65553D2A45A5B10028AE52 /* SceneDelegate.swift */; };
 		7F6555402A45A5B10028AE52 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F65553F2A45A5B10028AE52 /* MainVC.swift */; };
@@ -37,12 +40,16 @@
 		7FC986DF2A52D3A100F8F3C7 /* BaseInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC986DE2A52D3A100F8F3C7 /* BaseInterceptor.swift */; };
 		7FC986E12A52D44B00F8F3C7 /* UrlHeadPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC986E02A52D44B00F8F3C7 /* UrlHeadPoint.swift */; };
 		7FEC5C022A68E794000186A7 /* MostChamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEC5C012A68E794000186A7 /* MostChamp.swift */; };
+		7FEC5C042A694FC2000186A7 /* ImageUrlRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEC5C032A694FC2000186A7 /* ImageUrlRouter.swift */; };
 		7FFC6E8D2A498FE000565579 /* Caprasimo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FFC6E8C2A498FE000565579 /* Caprasimo-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7F1C98692A61145200E00A08 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		7F1C986B2A61217100E00A08 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
+		7F622BF72A69F6C300B2CBDA /* summoner.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = summoner.json; sourceTree = "<group>"; };
+		7F622BF92A69F72200B2CBDA /* DictionaryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryStore.swift; sourceTree = "<group>"; };
+		7F622BFB2A69F7F200B2CBDA /* SummonerSpells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerSpells.swift; sourceTree = "<group>"; };
 		7F6555382A45A5B10028AE52 /* LOL_Search_Record.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LOL_Search_Record.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F65553B2A45A5B10028AE52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F65553D2A45A5B10028AE52 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +79,7 @@
 		7FC986DE2A52D3A100F8F3C7 /* BaseInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInterceptor.swift; sourceTree = "<group>"; };
 		7FC986E02A52D44B00F8F3C7 /* UrlHeadPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlHeadPoint.swift; sourceTree = "<group>"; };
 		7FEC5C012A68E794000186A7 /* MostChamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostChamp.swift; sourceTree = "<group>"; };
+		7FEC5C032A694FC2000186A7 /* ImageUrlRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUrlRouter.swift; sourceTree = "<group>"; };
 		7FFC6E8C2A498FE000565579 /* Caprasimo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Caprasimo-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,6 +116,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		7F622BF62A69F6A800B2CBDA /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				7F622BF72A69F6C300B2CBDA /* summoner.json */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
 		7F65552F2A45A5B10028AE52 = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +146,8 @@
 				7F65553B2A45A5B10028AE52 /* AppDelegate.swift */,
 				7F65553D2A45A5B10028AE52 /* SceneDelegate.swift */,
 				7FC986CF2A52CD4E00F8F3C7 /* Constants.swift */,
+				7F622BF92A69F72200B2CBDA /* DictionaryStore.swift */,
+				7F622BF62A69F6A800B2CBDA /* JSON */,
 				7FC986D32A52D25300F8F3C7 /* Service */,
 				7FC986C52A52CB8A00F8F3C7 /* Model */,
 				7FC986C22A52C8DD00F8F3C7 /* ViewModel */,
@@ -165,8 +183,10 @@
 			isa = PBXGroup;
 			children = (
 				7FC986D12A52CE1600F8F3C7 /* DetailSummonerInfo.swift */,
+				7FEC5C032A694FC2000186A7 /* ImageUrlRouter.swift */,
 				7FEC5C012A68E794000186A7 /* MostChamp.swift */,
 				7FC986CE2A52CD3200F8F3C7 /* API Response */,
+				7F622BFB2A69F7F200B2CBDA /* SummonerSpells.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -280,6 +300,7 @@
 				7FC372412A56BD1A0045ED4D /* MatchSummaryCell.xib in Resources */,
 				7F6555482A45A5B20028AE52 /* LaunchScreen.storyboard in Resources */,
 				7F6555452A45A5B20028AE52 /* Assets.xcassets in Resources */,
+				7F622BF82A69F6C300B2CBDA /* summoner.json in Resources */,
 				7F6555432A45A5B10028AE52 /* Main.storyboard in Resources */,
 				7FFC6E8D2A498FE000565579 /* Caprasimo-Regular.ttf in Resources */,
 			);
@@ -293,15 +314,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FC986C92A52CC3800F8F3C7 /* League.swift in Sources */,
+				7F622BFA2A69F72200B2CBDA /* DictionaryStore.swift in Sources */,
 				7F6555402A45A5B10028AE52 /* MainVC.swift in Sources */,
 				7FC986C42A52C92000F8F3C7 /* MainVM.swift in Sources */,
 				7FAD0CC82A67AC7C00A1A0C1 /* SelectLocationVC.swift in Sources */,
 				7FC986DD2A52D37400F8F3C7 /* ApiLogger.swift in Sources */,
 				7F9433FA2A5B9CC8007F8E7D /* Router.swift in Sources */,
 				7FC986CD2A52CCF200F8F3C7 /* MatchInfo.swift in Sources */,
+				7F622BFC2A69F7F200B2CBDA /* SummonerSpells.swift in Sources */,
 				7FC986D22A52CE1600F8F3C7 /* DetailSummonerInfo.swift in Sources */,
 				7FC986DF2A52D3A100F8F3C7 /* BaseInterceptor.swift in Sources */,
 				7FC986E12A52D44B00F8F3C7 /* UrlHeadPoint.swift in Sources */,
+				7FEC5C042A694FC2000186A7 /* ImageUrlRouter.swift in Sources */,
 				7F9433FC2A5BD5AF007F8E7D /* LocalFileManager.swift in Sources */,
 				7F65553C2A45A5B10028AE52 /* AppDelegate.swift in Sources */,
 				7F870EBC2A5EA38000E0AE94 /* SummonerVC.swift in Sources */,

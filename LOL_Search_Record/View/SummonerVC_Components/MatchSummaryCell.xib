@@ -173,6 +173,13 @@
                 <outlet property="assist" destination="3uq-85-5ei" id="KKr-vY-NfL"/>
                 <outlet property="champImg" destination="V70-Cf-co0" id="uUM-1d-O1C"/>
                 <outlet property="death" destination="snV-e5-qI0" id="bkO-Fd-65i"/>
+                <outlet property="item0" destination="NaI-gO-vEm" id="yGF-4c-mFm"/>
+                <outlet property="item1" destination="Fs3-4W-Z0I" id="8Y4-Pe-ydV"/>
+                <outlet property="item2" destination="AXw-C1-Av5" id="oac-Jc-Rw2"/>
+                <outlet property="item3" destination="oEZ-QQ-8Ap" id="Z7O-3I-YhJ"/>
+                <outlet property="item4" destination="IIk-t7-F0Y" id="gt8-cc-XTi"/>
+                <outlet property="item5" destination="uac-Sl-cXq" id="GF2-im-XWT"/>
+                <outlet property="item6" destination="Gxi-06-vRg" id="0A9-c1-1vY"/>
                 <outlet property="kill" destination="d0w-nq-EbQ" id="CRe-8T-vya"/>
                 <outlet property="spellOne" destination="z16-B6-SdL" id="gP2-eh-olm"/>
                 <outlet property="spellTwo" destination="Umo-rV-hG8" id="E2j-V4-SB9"/>

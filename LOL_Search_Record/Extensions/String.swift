@@ -8,7 +8,11 @@
 import Foundation
 
 extension String {
-    func toProfileiconUrlString() -> String {
-        return "https://ddragon.leagueoflegends.com/cdn/13.13.1/img/profileicon/\(self).png"
+    func toProfileiconUrl() -> String {
+        return "https://ddragon.leagueoflegends.com/cdn/\(Constants.dataVersion)/img/profileicon/\(self).png"
+    }
+    
+    func toChampionSmallImgUrl() -> String {
+        return "https://ddragon.leagueoflegends.com/cdn/\(Constants.dataVersion)/img/champion/\(self).png"
     }
 }
