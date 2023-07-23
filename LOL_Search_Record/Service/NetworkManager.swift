@@ -129,12 +129,13 @@ class NetworkManager {
     func requestUrlImage(urlString: String) throws -> UIImage {
         guard let url = URL(string: urlString) else { throw NetworkError.unvalidUrl }
         var downloadedImg = UIImage()
-        let dataTask =
+        
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard let safeData = data else { return }
             guard let img = UIImage(data: safeData) else { return }
             downloadedImg = img
         }
+        .resume()
         return downloadedImg
     }
     
@@ -176,13 +177,13 @@ class NetworkManager {
             return nil
         }
         var imgData = Data()
-        let dataTask =
         URLSession.shared.dataTask(with: url) { data, _, _ in
             guard let safeData = data else {
                 print("NetworkManager - 이미지 데이터 없음")
                 return }
             imgData = safeData
         }
+        .resume()
         let uiImage = UIImage(data: imgData)
         return uiImage
     }
@@ -199,6 +200,6 @@ enum NetworkError: Error {
 protocol NetworkManagerDelegate {
     func noSummonerError()
     func noIngameError()
-    func isLoadingTrue()
-    func isLoadingFalse()
+    func isLoading()
+    func isLoadingSuccess()
 }

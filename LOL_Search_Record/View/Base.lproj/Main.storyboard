@@ -146,7 +146,7 @@
         <!--SummonerVC-->
         <scene sceneID="IO9-2a-h6F">
             <objects>
-                <viewController id="bWM-KB-K5S" customClass="SummonerVC" customModule="LOL_Search_Record" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SummonerVC" id="bWM-KB-K5S" customClass="SummonerVC" customModule="LOL_Search_Record" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1mb-7I-feC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -220,39 +220,17 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="miy-pW-CEg"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="emI-FR-wU8"/>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jDo-WW-Ea3">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
-                                <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="94b-kI-IeQ">
-                                        <rect key="frame" x="146.66666666666666" y="307.66666666666669" width="100" height="100"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="2DO-bX-zsc"/>
-                                            <constraint firstAttribute="width" constant="100" id="t7W-9c-XgH"/>
-                                        </constraints>
-                                    </activityIndicatorView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="94b-kI-IeQ" firstAttribute="centerX" secondItem="jDo-WW-Ea3" secondAttribute="centerX" id="ngR-qV-CLq"/>
-                                    <constraint firstItem="94b-kI-IeQ" firstAttribute="centerY" secondItem="jDo-WW-Ea3" secondAttribute="centerY" id="v0t-fk-FFf"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bwB-tJ-YJF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="bwB-tJ-YJF" firstAttribute="trailing" secondItem="jDo-WW-Ea3" secondAttribute="trailing" id="1N9-Mx-0mC"/>
                             <constraint firstItem="TDe-Gq-vsL" firstAttribute="leading" secondItem="bwB-tJ-YJF" secondAttribute="leading" constant="15" id="CgG-K1-DGi"/>
-                            <constraint firstItem="jDo-WW-Ea3" firstAttribute="top" secondItem="bwB-tJ-YJF" secondAttribute="top" id="R1y-Zl-7xl"/>
-                            <constraint firstItem="bwB-tJ-YJF" firstAttribute="bottom" secondItem="jDo-WW-Ea3" secondAttribute="bottom" id="nal-ey-hTU"/>
                             <constraint firstItem="TDe-Gq-vsL" firstAttribute="top" secondItem="bwB-tJ-YJF" secondAttribute="top" constant="10" id="pd3-IS-NIb"/>
-                            <constraint firstItem="jDo-WW-Ea3" firstAttribute="leading" secondItem="bwB-tJ-YJF" secondAttribute="leading" id="vIY-Pi-AhW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="p6z-g5-XpN"/>
                     <connections>
                         <outlet property="icon" destination="5Sb-Vu-auT" id="fD4-Yb-xHE"/>
-                        <outlet property="loadingView" destination="jDo-WW-Ea3" id="MN9-Gs-5b9"/>
                         <outlet property="name" destination="7VQ-uL-Rqt" id="NhZ-Qw-raX"/>
                         <outlet property="summaryTable" destination="jAB-ZL-xdu" id="Kie-cQ-r16"/>
                         <outlet property="tierImg" destination="rPH-oI-l3F" id="u0E-vI-ni5"/>

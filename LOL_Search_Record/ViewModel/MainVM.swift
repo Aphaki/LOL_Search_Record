@@ -17,11 +17,9 @@ class MainVM {
     
     
     
-    func searchSummonerInfo(urlBaseHead: UrlHeadPoint, name: String) {
-        Task {
-            let searchedSummonerDetail = try await service.saveSearchedSummonerDetail(urlBase: urlBaseHead, name: name)
-            self.searchedDetailInfo = searchedSummonerDetail
-        }
+    func searchSummonerInfo(urlBaseHead: UrlHeadPoint, name: String) async throws -> DetailSummonerInfo {
+        let searchedSummonerDetail = try await service.saveSearchedSummonerDetail(urlBase: urlBaseHead, name: name)
+        return searchedSummonerDetail
     }
     
     

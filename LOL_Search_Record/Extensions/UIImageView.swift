@@ -25,14 +25,25 @@ extension UIImageView {
                     print("extension UIImageView - loadFromUrl() - this URL is not return DATA : \(urlString)")
                     return
                 }
-                guard let img = UIImage(data: safeData) else {
-                    print("extension UIImageView - loadFromUrl() - This URL Data is not Image : \(urlString)")
-                    return
+//                guard let img = UIImage(data: safeData) else {
+//                    print("extension UIImageView - loadFromUrl() - This URL Data is not Image : \(urlString)")
+//                    return
+//                }
+                if let img = UIImage(data: safeData) {
+                    DispatchQueue.main.async {
+                        self.image = img
+                        LocalFileManager.shared.saveImage(image: img, folderName: folderName, imgName: imgName)
+                    }
+                } else {
+                    let emptyItemImg = UIImage(named: "EmptyItem")!
+                    DispatchQueue.main.async {
+                        self.image = emptyItemImg
+                        LocalFileManager.shared.saveImage(image: emptyItemImg, folderName: folderName, imgName: imgName)
+                    }
+                    
                 }
-                DispatchQueue.main.async {
-                    self.image = img
-                    LocalFileManager.shared.saveImage(image: img, folderName: folderName, imgName: imgName)
-                }
+                
+                
             }
             .resume()
         }

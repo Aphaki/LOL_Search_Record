@@ -8,7 +8,7 @@
 import Foundation
 
 extension Int {
-    func iconIntToString() -> String {
+    func intToString() -> String {
         return "\(self)"
     }
 }

@@ -41,5 +41,5 @@ class DictionaryStore {
     
     
 }
-
+// summoner JSON "https://ddragon.leagueoflegends.com/cdn/13.14.1/data/ko_KR/summoner.json"
 // 아이템 세부 "https://ddragon.leagueoflegends.com/cdn/13.14.1/data/ko_KR/item.json"

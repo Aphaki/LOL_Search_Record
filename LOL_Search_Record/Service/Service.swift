@@ -11,19 +11,7 @@ import Alamofire
 
 class Service {
     
-    @Published var regionPicker: UrlHeadPoint = .kr
-    @Published var searchBarText: String = ""
-    @Published var isLoading: Bool = false
-    
-    @Published var searchedDetail: DetailSummonerInfo?
-//    @Published var myDetailSummonerInfo: DetailSummonerInfo?
-    @Published var searchedSummonersDetail: [DetailSummonerInfo] = []
-    @Published var bookMarkSummonersDetail: [DetailSummonerInfo] = []
-    
-//    @Published var noSummonerError = PassthroughSubject<(),Never>()
-    var delegate: NetworkManagerDelegate?
-    
-    private var subscription = Set<AnyCancellable>()
+    var delegate: ServiceDelegate?
     
     // SUMMONER-V4
     func requestSummonerInfo(urlBaseHead: UrlHeadPoint, name: String) async throws -> SummonerInfo {
@@ -50,8 +38,10 @@ class Service {
     }
     
     func saveSearchedSummonerDetail(urlBase: UrlHeadPoint, name: String) async throws -> DetailSummonerInfo{
-        let searchedSummonerDetail =
-        try await fetchAndChangeToDetail(urlBase: urlBase, name: name)
+        let searchedSummonerDetail = try await fetchAndChangeToDetail(urlBase: urlBase, name: name)
+        await MainActor.run {
+            delegate?.dataTaskSuccess(returnedData: searchedSummonerDetail)
+        }
         return searchedSummonerDetail
     }
     
@@ -238,19 +228,8 @@ class Service {
             summonerList.append(aDetailSummoner)
         }
     }
-    
-//    func duplicateCheckAndAdd(aDetailSummoner: DetailSummonerInfo) {
-//        let nameArray =
-//        self.searchedSummonersDetail.map { aDetail in return aDetail.summonerName }
-//
-//        if nameArray.filter( { $0 == aDetailSummoner.summonerName} ).isEmpty {
-//            self.searchedSummonersDetail.append(aDetailSummoner)
-//        }
-//    }
-//    private func appIsLoadingTrue() async {
-//        self.isLoading = true
-//    }
-//    private func appIsLoadingFalse() async {
-//        self.isLoading = false
-//    }
+}
+
+protocol ServiceDelegate {
+    func dataTaskSuccess(returnedData: DetailSummonerInfo)
 }

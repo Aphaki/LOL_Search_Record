@@ -69,11 +69,16 @@ extension MainVC: UISearchBarDelegate {
             present(alertController, animated: true)
             return
         }
-        vm.searchSummonerInfo(urlBaseHead: urlHead, name: summonerName)
-        let summonerVC = SummonerVC()
-        summonerVC.summonerInfo = vm.searchedDetailInfo
-        navigationController?.pushViewController(summonerVC, animated: true)
-        
+        Task {
+            let result = try await vm.searchSummonerInfo(urlBaseHead: urlHead, name: summonerName)
+//            SummonerStoryboard
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let summonerVC = storyboard.instantiateViewController(withIdentifier: "SummonerVC") as! SummonerVC
+            summonerVC.summonerInfo = result
+            
+            navigationController?.pushViewController(summonerVC, animated: true)
+        }
+    
     }
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        
