@@ -32,6 +32,7 @@ class SummonerVC: UIViewController {
         loadTierText()
         loadTierImage()
         loadSummonerName()
+        print("summonerInfo데이터: \(summonerInfo.debugDescription)")
     }
     
     //MARK: - Receive Data and Draw UI
@@ -48,7 +49,7 @@ class SummonerVC: UIViewController {
     func loadTierText() {
         guard let summonerInfo = summonerInfo else { return }
         let rankString = summonerInfo.rank
-        tierText.text = rankString
+        tierText.text = rankString == "" ? "UNRANKED" : rankString
     }
     func loadTierImage() {
         guard let summonerInfo = summonerInfo else { return }
@@ -70,7 +71,7 @@ extension SummonerVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let shortInfo = summonersMatch[indexPath.row]
-        guard let cell = summaryTable.dequeueReusableCell(withIdentifier: Constants.matchSummaryCell, for: indexPath) as? MatchSummaryCell else { fatalError("Unable to dequeue MatchSummaryCell") }
+        guard let cell = summaryTable.dequeueReusableCell(withIdentifier: Constants.cellName.matchSummaryCell.rawValue, for: indexPath) as? MatchSummaryCell else { fatalError("Unable to dequeue MatchSummaryCell") }
         // 승,패 레이블
         cell.winLabel.text = shortInfo.win ? "Win" : "Lose"
         cell.winLabel.backgroundColor = shortInfo.win ? .black : .white
@@ -83,9 +84,6 @@ extension SummonerVC: UITableViewDataSource {
         let spell2ImgUrl = ImageUrlRouter.spell(name: DictionaryStore.shared.spellStore[shortInfo.summoner2ID.intToString()]!).imgUrl
         cell.spellOne.loadImage(from: spell1ImgUrl, folderName: "SpellImg", imgName: shortInfo.summoner1ID.intToString())
         cell.spellTwo.loadImage(from: spell2ImgUrl, folderName: "SpellImg", imgName: shortInfo.summoner2ID.intToString())
-        // 소환사 이름
-        let summonerName = shortInfo.summonerName
-        cell.summonerName.text = summonerName
         // KDA
         let kill = shortInfo.kills.intToString()
         let death = shortInfo.deaths.intToString()

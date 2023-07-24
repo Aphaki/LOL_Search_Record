@@ -14,9 +14,7 @@ class MatchSummaryCell: UITableViewCell {
     
     @IBOutlet weak var spellOne: UIImageView!
     @IBOutlet weak var spellTwo: UIImageView!
-    
-    @IBOutlet weak var summonerName: UILabel!
-    
+        
     @IBOutlet weak var kill: UILabel!
     @IBOutlet weak var death: UILabel!
     @IBOutlet weak var assist: UILabel!
