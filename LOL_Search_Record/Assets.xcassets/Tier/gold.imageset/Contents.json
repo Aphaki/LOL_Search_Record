@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "gold.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "TFT_Regalia_Gold.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

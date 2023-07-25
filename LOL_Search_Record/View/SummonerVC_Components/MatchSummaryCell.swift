@@ -28,6 +28,10 @@ class MatchSummaryCell: UITableViewCell {
     @IBOutlet weak var item5: UIImageView!
     @IBOutlet weak var item6: UIImageView!
     
+    @IBOutlet weak var timeFromNow: UILabel!
+    @IBOutlet weak var gameTime: UILabel!
+    @IBOutlet weak var gameType: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

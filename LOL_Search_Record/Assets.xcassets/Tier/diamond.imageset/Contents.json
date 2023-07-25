@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "diamond.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "TFT_Regalia_Diamond.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

@@ -79,6 +79,7 @@ extension MainVC: UISearchBarDelegate {
             return
         }
         Task {
+            view.endEditing(true)
             let result = try await vm.searchSummonerInfo(urlBaseHead: urlHead, name: summonerName)
             //            SummonerStoryboard
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -89,24 +90,34 @@ extension MainVC: UISearchBarDelegate {
         }
         
     }
-    //    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-    //        print("searchBar cancel button clicked")
-    //        summonerSearchBar.text = ""
-    //        summonerSearchBar.resignFirstResponder()
-    //    }
-    
 }
 
 extension MainVC: UITableViewDataSource, UITableViewDelegate {
     // Data Source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 0 // 셀 갯수
+        return vm.searchedSummonersInfo.count // 셀 갯수
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "SearchedSummonerCell")
+        guard let cell = searchedSummoners.dequeueReusableCell(withIdentifier: "SearchedSummonerCell", for: indexPath) as? SearchedSummonerCell else {
+            fatalError("MainVC - Unable to dequeue searchedSummonerCell")
+        }
+        let aSummonerInfo = vm.searchedSummonersInfo[indexPath.row]
+        // 프로필 아이콘
+        let iconCode = aSummonerInfo.icon.intToString()
+        let iconURL = ImageUrlRouter.icon(code: iconCode).imgUrl
+        cell.iconImage.loadImage(from: iconURL, folderName: "profileicon", imgName: iconCode)
+        // 소환사 이름
+        let aSummonerName = aSummonerInfo.summonerName
+        cell.summonerName.text = aSummonerName
+        // 티어 이미지
+        let tierImg = aSummonerInfo.tier
+        cell.tierImage.image = UIImage(named: tierImg.lowercased())
+        // 티어 텍스트
+        let tierText = "\(aSummonerInfo.tier)+ \(aSummonerInfo.rank)"
+        cell.tierText.text = tierText
         
         return cell
     }

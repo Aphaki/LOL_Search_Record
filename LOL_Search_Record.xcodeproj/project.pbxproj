@@ -18,12 +18,18 @@
 		7F6555432A45A5B10028AE52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6555412A45A5B10028AE52 /* Main.storyboard */; };
 		7F6555452A45A5B20028AE52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F6555442A45A5B20028AE52 /* Assets.xcassets */; };
 		7F6555482A45A5B20028AE52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6555462A45A5B20028AE52 /* LaunchScreen.storyboard */; };
+		7F8510522A6FD8BE001B39C6 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8510512A6FD8BE001B39C6 /* Double.swift */; };
+		7F8510542A6FE0A5001B39C6 /* JsonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8510532A6FE0A5001B39C6 /* JsonManager.swift */; };
+		7F8510562A707C5B001B39C6 /* queueId.json in Resources */ = {isa = PBXBuildFile; fileRef = 7F8510552A707C5B001B39C6 /* queueId.json */; };
+		7F8510582A707E8A001B39C6 /* QueueIdInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8510572A707E8A001B39C6 /* QueueIdInfo.swift */; };
 		7F870EBC2A5EA38000E0AE94 /* SummonerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F870EBB2A5EA38000E0AE94 /* SummonerVC.swift */; };
 		7F9433F82A5B9C04007F8E7D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9433F72A5B9C04007F8E7D /* NetworkManager.swift */; };
 		7F9433FA2A5B9CC8007F8E7D /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9433F92A5B9CC8007F8E7D /* Router.swift */; };
 		7F9433FC2A5BD5AF007F8E7D /* LocalFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9433FB2A5BD5AF007F8E7D /* LocalFileManager.swift */; };
 		7F9433FE2A5BD9A5007F8E7D /* NetworkImgService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9433FD2A5BD9A5007F8E7D /* NetworkImgService.swift */; };
 		7F9434062A5BE3E7007F8E7D /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9434052A5BE3E7007F8E7D /* UIImageView.swift */; };
+		7FA94E112A6E8D5600491FB7 /* SearchedSummonerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA94E0F2A6E8D5600491FB7 /* SearchedSummonerCell.swift */; };
+		7FA94E122A6E8D5600491FB7 /* SearchedSummonerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FA94E102A6E8D5600491FB7 /* SearchedSummonerCell.xib */; };
 		7FAD0CC82A67AC7C00A1A0C1 /* SelectLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAD0CC72A67AC7C00A1A0C1 /* SelectLocationVC.swift */; };
 		7FC372402A56BD1A0045ED4D /* MatchSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC3723E2A56BD1A0045ED4D /* MatchSummaryCell.swift */; };
 		7FC372412A56BD1A0045ED4D /* MatchSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FC3723F2A56BD1A0045ED4D /* MatchSummaryCell.xib */; };
@@ -58,12 +64,18 @@
 		7F6555442A45A5B20028AE52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F6555472A45A5B20028AE52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F6555492A45A5B20028AE52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F8510512A6FD8BE001B39C6 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		7F8510532A6FE0A5001B39C6 /* JsonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonManager.swift; sourceTree = "<group>"; };
+		7F8510552A707C5B001B39C6 /* queueId.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = queueId.json; sourceTree = "<group>"; };
+		7F8510572A707E8A001B39C6 /* QueueIdInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueIdInfo.swift; sourceTree = "<group>"; };
 		7F870EBB2A5EA38000E0AE94 /* SummonerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerVC.swift; sourceTree = "<group>"; };
 		7F9433F72A5B9C04007F8E7D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7F9433F92A5B9CC8007F8E7D /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		7F9433FB2A5BD5AF007F8E7D /* LocalFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileManager.swift; sourceTree = "<group>"; };
 		7F9433FD2A5BD9A5007F8E7D /* NetworkImgService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImgService.swift; sourceTree = "<group>"; };
 		7F9434052A5BE3E7007F8E7D /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		7FA94E0F2A6E8D5600491FB7 /* SearchedSummonerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedSummonerCell.swift; sourceTree = "<group>"; };
+		7FA94E102A6E8D5600491FB7 /* SearchedSummonerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchedSummonerCell.xib; sourceTree = "<group>"; };
 		7FAD0CC72A67AC7C00A1A0C1 /* SelectLocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationVC.swift; sourceTree = "<group>"; };
 		7FC3723E2A56BD1A0045ED4D /* MatchSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchSummaryCell.swift; sourceTree = "<group>"; };
 		7FC3723F2A56BD1A0045ED4D /* MatchSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchSummaryCell.xib; sourceTree = "<group>"; };
@@ -101,6 +113,7 @@
 				7F9434052A5BE3E7007F8E7D /* UIImageView.swift */,
 				7F1C98692A61145200E00A08 /* String.swift */,
 				7F1C986B2A61217100E00A08 /* Int.swift */,
+				7F8510512A6FD8BE001B39C6 /* Double.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -110,6 +123,8 @@
 			children = (
 				7F6555412A45A5B10028AE52 /* Main.storyboard */,
 				7F65553F2A45A5B10028AE52 /* MainVC.swift */,
+				7FA94E0F2A6E8D5600491FB7 /* SearchedSummonerCell.swift */,
+				7FA94E102A6E8D5600491FB7 /* SearchedSummonerCell.xib */,
 				7FC3723D2A56BCD20045ED4D /* SummonerVC_Components */,
 				7FAD0CC72A67AC7C00A1A0C1 /* SelectLocationVC.swift */,
 			);
@@ -119,6 +134,8 @@
 		7F622BF62A69F6A800B2CBDA /* JSON */ = {
 			isa = PBXGroup;
 			children = (
+				7F8510532A6FE0A5001B39C6 /* JsonManager.swift */,
+				7F8510552A707C5B001B39C6 /* queueId.json */,
 				7F622BF72A69F6C300B2CBDA /* summoner.json */,
 			);
 			path = JSON;
@@ -185,6 +202,7 @@
 				7FC986D12A52CE1600F8F3C7 /* DetailSummonerInfo.swift */,
 				7FEC5C032A694FC2000186A7 /* ImageUrlRouter.swift */,
 				7FEC5C012A68E794000186A7 /* MostChamp.swift */,
+				7F8510572A707E8A001B39C6 /* QueueIdInfo.swift */,
 				7FC986CE2A52CD3200F8F3C7 /* API Response */,
 				7F622BFB2A69F7F200B2CBDA /* SummonerSpells.swift */,
 			);
@@ -303,6 +321,8 @@
 				7F622BF82A69F6C300B2CBDA /* summoner.json in Resources */,
 				7F6555432A45A5B10028AE52 /* Main.storyboard in Resources */,
 				7FFC6E8D2A498FE000565579 /* Caprasimo-Regular.ttf in Resources */,
+				7F8510562A707C5B001B39C6 /* queueId.json in Resources */,
+				7FA94E122A6E8D5600491FB7 /* SearchedSummonerCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +343,7 @@
 				7FC986CD2A52CCF200F8F3C7 /* MatchInfo.swift in Sources */,
 				7F622BFC2A69F7F200B2CBDA /* SummonerSpells.swift in Sources */,
 				7FC986D22A52CE1600F8F3C7 /* DetailSummonerInfo.swift in Sources */,
+				7F8510582A707E8A001B39C6 /* QueueIdInfo.swift in Sources */,
 				7FC986DF2A52D3A100F8F3C7 /* BaseInterceptor.swift in Sources */,
 				7FC986E12A52D44B00F8F3C7 /* UrlHeadPoint.swift in Sources */,
 				7FEC5C042A694FC2000186A7 /* ImageUrlRouter.swift in Sources */,
@@ -337,9 +358,12 @@
 				7FC372402A56BD1A0045ED4D /* MatchSummaryCell.swift in Sources */,
 				7F9434062A5BE3E7007F8E7D /* UIImageView.swift in Sources */,
 				7F1C986C2A61217100E00A08 /* Int.swift in Sources */,
+				7FA94E112A6E8D5600491FB7 /* SearchedSummonerCell.swift in Sources */,
 				7FC986C72A52CBD400F8F3C7 /* SummonerInfo.swift in Sources */,
 				7FC986D02A52CD4E00F8F3C7 /* Constants.swift in Sources */,
+				7F8510542A6FE0A5001B39C6 /* JsonManager.swift in Sources */,
 				7F9433FE2A5BD9A5007F8E7D /* NetworkImgService.swift in Sources */,
+				7F8510522A6FD8BE001B39C6 /* Double.swift in Sources */,
 				7FC986DB2A52D34F00F8F3C7 /* ApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

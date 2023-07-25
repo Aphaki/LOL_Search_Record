@@ -9,7 +9,8 @@ import Foundation
 
 class MainVM {
     
-    private(set) var searchedDetailInfo: DetailSummonerInfo?
+//    private(set) var searchedDetailInfo: DetailSummonerInfo?
+    private(set) var searchedSummonersInfo: [DetailSummonerInfo] = []
     
     private(set) var urlBaseHead: UrlHeadPoint = .kr
     
@@ -21,6 +22,5 @@ class MainVM {
         let searchedSummonerDetail = try await service.saveSearchedSummonerDetail(urlBase: urlBaseHead, name: name)
         return searchedSummonerDetail
     }
-    
     
 }

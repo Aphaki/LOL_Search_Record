@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "provisional.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "TFT_Regalia_Provisional.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

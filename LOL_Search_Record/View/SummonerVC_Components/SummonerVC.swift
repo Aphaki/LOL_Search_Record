@@ -16,6 +16,9 @@ class SummonerVC: UIViewController {
     @IBOutlet weak var summaryTable: UITableView!
     
     var summonerInfo: DetailSummonerInfo?
+    var matchInfos: [MatchInfo] {
+        return summonerInfo?.matchInfos ?? []
+    }
     var summonersMatch: [Participant] {
         return self.summonerInfo?.mySummonerMatchInfos ?? []
     }
@@ -24,15 +27,15 @@ class SummonerVC: UIViewController {
         super.viewDidLoad()
         print("SummonerVC - viewDidLoad() called")
         self.summaryTable.dataSource = self
+        //        self.summaryTable.delegate = self
         let nib = UINib(nibName: "MatchSummaryCell", bundle: nil)
         summaryTable.register(nib, forCellReuseIdentifier: "MatchSummaryCell")
         
-//        self.summaryTable.delegate = self
+
         loadiconImage()
         loadTierText()
         loadTierImage()
         loadSummonerName()
-        print("summonerInfo데이터: \(summonerInfo.debugDescription)")
     }
     
     //MARK: - Receive Data and Draw UI
@@ -48,12 +51,14 @@ class SummonerVC: UIViewController {
     }
     func loadTierText() {
         guard let summonerInfo = summonerInfo else { return }
+        let tierString = summonerInfo.tier == "provisional" ? "Unranked" : summonerInfo.tier
         let rankString = summonerInfo.rank
-        tierText.text = rankString == "" ? "UNRANKED" : rankString
+        let tierRank = "\(tierString) \(rankString)"
+        tierText.text = tierRank
     }
     func loadTierImage() {
         guard let summonerInfo = summonerInfo else { return }
-        tierImg.image = UIImage(named: summonerInfo.tier)
+        tierImg.image = UIImage(named: summonerInfo.tier.lowercased())
     }
     func loadSummonerName() {
         guard let summonerInfo = summonerInfo else { return }
@@ -121,6 +126,23 @@ extension SummonerVC: UITableViewDataSource {
         let item6 = shortInfo.item6.intToString()
         let item6Url = ImageUrlRouter.item(name: item6).imgUrl
         cell.item6.loadImage(from: item6Url, folderName: "Item", imgName: item6)
+        
+        // 게임 시간
+        let matchInfo = matchInfos[indexPath.row]
+        
+        let hour = matchInfo.info.gameDuration / 60
+        let hourString = hour < 10 ? "0\(hour)" : "\(hour)"
+        let minute = matchInfo.info.gameCreation % 60
+        let minuteString = minute < 10 ? "0\(minute)" : "\(minute)"
+        cell.gameTime.text = "[\(hourString):\(minuteString)]"
+        
+        // 현재로부터 흐른 시간
+        let timeFromNow = matchInfo.info.elapsedTime.unixToMyString()
+        cell.timeFromNow.text = timeFromNow
+        
+        // 게임 타입
+        let gameType = matchInfo.info.queueID.intToString()
+        cell.gameType.text = gameType
         
         return cell
     }
