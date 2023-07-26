@@ -62,6 +62,23 @@ class MainVC: UIViewController {
         view.endEditing(true) // 키보드를 내립니다.
     }
     
+    //MARK: - 로딩뷰
+    func addLoadingView(indicaterView: UIActivityIndicatorView) {
+         // 스타일을 .large로 설정
+        indicaterView.translatesAutoresizingMaskIntoConstraints = false // 오토레이아웃 설정
+
+        // indicaterView의 크기를 설정해줍니다.
+        indicaterView.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        indicaterView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+
+        view.addSubview(indicaterView)
+
+        // indicaterView를 뷰의 중앙에 배치합니다.
+        indicaterView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        indicaterView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+
+        indicaterView.startAnimating() // 인디케이터 애니메이션 시작
+    }
 }
 
 
@@ -79,13 +96,21 @@ extension MainVC: UISearchBarDelegate {
             return
         }
         Task {
+            // 키보드 내리기
             view.endEditing(true)
+            // 로딩뷰 추가
+            view.alpha = 0.1
+            let indicaterView = UIActivityIndicatorView(style: .large)
+            addLoadingView(indicaterView: indicaterView)
+            // 네트워킹후 결과값 다음뷰에다가 적용
             let result = try await vm.searchSummonerInfo(urlBaseHead: urlHead, name: summonerName)
-            //            SummonerStoryboard
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let summonerVC = storyboard.instantiateViewController(withIdentifier: "SummonerVC") as! SummonerVC
             summonerVC.summonerInfo = result
-            
+            // 로딩뷰 제거
+            view.alpha = 1.0
+            indicaterView.removeFromSuperview()
+            // 다음뷰 푸쉬
             navigationController?.pushViewController(summonerVC, animated: true)
         }
         

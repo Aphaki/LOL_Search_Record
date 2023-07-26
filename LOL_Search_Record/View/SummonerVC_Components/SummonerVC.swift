@@ -15,6 +15,8 @@ class SummonerVC: UIViewController {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var summaryTable: UITableView!
     
+    
+    var queueIdInfos: [QueueIDInfo] = []
     var summonerInfo: DetailSummonerInfo?
     var matchInfos: [MatchInfo] {
         return summonerInfo?.matchInfos ?? []
@@ -25,17 +27,26 @@ class SummonerVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("SummonerVC - viewDidLoad() called")
+        // 테이블뷰(데이터소스, 델리겟) + 셀(NIb)
         self.summaryTable.dataSource = self
-        //        self.summaryTable.delegate = self
+//        self.summaryTable.delegate = self
         let nib = UINib(nibName: "MatchSummaryCell", bundle: nil)
         summaryTable.register(nib, forCellReuseIdentifier: "MatchSummaryCell")
-        
-
+        //큐 사전 불러오기
+        loadQueueIdInfo()
+        //UI 데이터 입력
         loadiconImage()
         loadTierText()
         loadTierImage()
         loadSummonerName()
+    }
+    
+    func loadQueueIdInfo() {
+        guard
+            let data = JsonManager.shared.readJsonFile(filename: "queueId", as: [QueueIDInfo].self) else {
+            return
+        }
+        self.queueIdInfos = data
     }
     
     //MARK: - Receive Data and Draw UI
@@ -141,8 +152,10 @@ extension SummonerVC: UITableViewDataSource {
         cell.timeFromNow.text = timeFromNow
         
         // 게임 타입
-        let gameType = matchInfo.info.queueID.intToString()
-        cell.gameType.text = gameType
+        let queueId = matchInfo.info.queueID
+        let queueIdInfo = queueIdInfos.first { $0.queueID == queueId }
+        let queueDescription = queueIdInfo?.description ?? ""
+        cell.gameType.text = queueDescription
         
         return cell
     }
