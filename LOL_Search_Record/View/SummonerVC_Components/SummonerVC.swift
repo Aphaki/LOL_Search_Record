@@ -161,38 +161,4 @@ extension SummonerVC: UITableViewDataSource {
     }
 }
 
-//extension SummonerVC: NetworkManagerDelegate {
-//    func noIngameError() {
-//        
-//    }
-//    
-//    func isLoading() {
-//        
-//    }
-//    
-//    func isLoadingSuccess() {
-//        
-//    }
-//    
-//    func noSummonerError() {
-//        print("SummonerVC - noSummonerError() called")
-//        let alert = UIAlertController(title: "소환사 없음", message: "검색한 소환사는 존재하지 않습니다. 다른 소환사 이름을 작성해 주세요.", preferredStyle: .alert)
-//        let alertAction = UIAlertAction(title: "확인", style: .cancel) { _ in
-//            self.navigationController?.popViewController(animated: true)
-//        }
-//        alert.addAction(alertAction)
-//        present(alert, animated: true)
-//    }
-//}
 
-//extension SummonerVC: ServiceDelegate {
-//    func dataTaskSuccess(returnedData: DetailSummonerInfo) {
-//        print("SummonerVC - dataTaskSuccess() called")
-//        self.summonerInfo = returnedData
-//        loadiconImage()
-//        loadTierText()
-//        loadTierImage()
-//        loadSummonerName()
-//        loadingViewHidden()
-//    }
-//}

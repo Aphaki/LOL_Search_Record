@@ -19,8 +19,6 @@ class SelectLocationVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         super.viewDidLoad()
         locationPicker.delegate = self
         locationPicker.dataSource = self
-        
-        // Do any additional setup after loading the view.
     }
     
     
@@ -34,9 +32,6 @@ class SelectLocationVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
         
         navigationController?.popToRootViewController(animated: true)
     }
-    
-    
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }

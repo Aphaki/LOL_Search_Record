@@ -9,10 +9,9 @@
 import Foundation
 
 struct League: Codable, Identifiable {
-    var id = UUID()
-    
+    var id: String
     let leagueID, queueType, tier, rank: String
-    let summonerID, summonerName: String
+    let summonerName: String
     let leaguePoints, wins, losses: Int
     let veteran, inactive, freshBlood, hotStreak: Bool
     
@@ -23,7 +22,8 @@ struct League: Codable, Identifiable {
     enum CodingKeys: String, CodingKey {
         case leagueID = "leagueId"
         case queueType, tier, rank
-        case summonerID = "summonerId"
+        case id = "summonerId"
+//        case summonerID = "summonerId"
         case summonerName, leaguePoints, wins, losses, veteran, inactive, freshBlood, hotStreak
     }
 }

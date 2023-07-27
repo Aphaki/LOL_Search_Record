@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22F82" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="League" representedClassName="League" syncable="YES" codeGenerationType="class">
+        <attribute name="freshBlood" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="hotStreak" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="inactive" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="leagueID" optional="YES" attributeType="String"/>
+        <attribute name="leaguePoints" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="losses" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="queueType" optional="YES" attributeType="String"/>
+        <attribute name="rank" optional="YES" attributeType="String"/>
+        <attribute name="summonerName" optional="YES" attributeType="String"/>
+        <attribute name="tier" optional="YES" attributeType="String"/>
+        <attribute name="veteran" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="winRates" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="wins" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="MostChamp" representedClassName="MostChamp" syncable="YES" codeGenerationType="class">
+        <attribute name="championName" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="kda" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="winningRate" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="SummonerInfo" representedClassName="SummonerInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="accountId" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="profileIconId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="puuid" optional="YES" attributeType="String"/>
+        <attribute name="revisionDate" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="summonerLevel" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+</model>

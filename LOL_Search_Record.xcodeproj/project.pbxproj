@@ -33,6 +33,9 @@
 		7FAD0CC82A67AC7C00A1A0C1 /* SelectLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FAD0CC72A67AC7C00A1A0C1 /* SelectLocationVC.swift */; };
 		7FC372402A56BD1A0045ED4D /* MatchSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC3723E2A56BD1A0045ED4D /* MatchSummaryCell.swift */; };
 		7FC372412A56BD1A0045ED4D /* MatchSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FC3723F2A56BD1A0045ED4D /* MatchSummaryCell.xib */; };
+		7FC8AEB02A710B2B00DD8820 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC8AEAF2A710B2B00DD8820 /* CoreDataService.swift */; };
+		7FC8AEB32A710C7C00DD8820 /* SummonerContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7FC8AEB12A710C7C00DD8820 /* SummonerContainer.xcdatamodeld */; };
+		7FC8AEB62A712C9E00DD8820 /* MatchDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC8AEB52A712C9E00DD8820 /* MatchDetailVC.swift */; };
 		7FC986C42A52C92000F8F3C7 /* MainVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC986C32A52C92000F8F3C7 /* MainVM.swift */; };
 		7FC986C72A52CBD400F8F3C7 /* SummonerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC986C62A52CBD400F8F3C7 /* SummonerInfo.swift */; };
 		7FC986C92A52CC3800F8F3C7 /* League.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC986C82A52CC3800F8F3C7 /* League.swift */; };
@@ -79,6 +82,9 @@
 		7FAD0CC72A67AC7C00A1A0C1 /* SelectLocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationVC.swift; sourceTree = "<group>"; };
 		7FC3723E2A56BD1A0045ED4D /* MatchSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchSummaryCell.swift; sourceTree = "<group>"; };
 		7FC3723F2A56BD1A0045ED4D /* MatchSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchSummaryCell.xib; sourceTree = "<group>"; };
+		7FC8AEAF2A710B2B00DD8820 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		7FC8AEB22A710C7C00DD8820 /* SummonerContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SummonerContainer.xcdatamodel; sourceTree = "<group>"; };
+		7FC8AEB52A712C9E00DD8820 /* MatchDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailVC.swift; sourceTree = "<group>"; };
 		7FC986C32A52C92000F8F3C7 /* MainVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVM.swift; sourceTree = "<group>"; };
 		7FC986C62A52CBD400F8F3C7 /* SummonerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerInfo.swift; sourceTree = "<group>"; };
 		7FC986C82A52CC3800F8F3C7 /* League.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = League.swift; sourceTree = "<group>"; };
@@ -127,6 +133,7 @@
 				7FA94E102A6E8D5600491FB7 /* SearchedSummonerCell.xib */,
 				7FC3723D2A56BCD20045ED4D /* SummonerVC_Components */,
 				7FAD0CC72A67AC7C00A1A0C1 /* SelectLocationVC.swift */,
+				7FC8AEB42A712C3800DD8820 /* MatchDetailVC_Components */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -164,6 +171,7 @@
 				7F65553D2A45A5B10028AE52 /* SceneDelegate.swift */,
 				7FC986CF2A52CD4E00F8F3C7 /* Constants.swift */,
 				7F622BF92A69F72200B2CBDA /* DictionaryStore.swift */,
+				7FC8AEAE2A71092800DD8820 /* CoreData */,
 				7F622BF62A69F6A800B2CBDA /* JSON */,
 				7FC986D32A52D25300F8F3C7 /* Service */,
 				7FC986C52A52CB8A00F8F3C7 /* Model */,
@@ -186,6 +194,23 @@
 				7FC3723F2A56BD1A0045ED4D /* MatchSummaryCell.xib */,
 			);
 			path = SummonerVC_Components;
+			sourceTree = "<group>";
+		};
+		7FC8AEAE2A71092800DD8820 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				7FC8AEAF2A710B2B00DD8820 /* CoreDataService.swift */,
+				7FC8AEB12A710C7C00DD8820 /* SummonerContainer.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		7FC8AEB42A712C3800DD8820 /* MatchDetailVC_Components */ = {
+			isa = PBXGroup;
+			children = (
+				7FC8AEB52A712C9E00DD8820 /* MatchDetailVC.swift */,
+			);
+			path = MatchDetailVC_Components;
 			sourceTree = "<group>";
 		};
 		7FC986C22A52C8DD00F8F3C7 /* ViewModel */ = {
@@ -336,6 +361,7 @@
 				7FC986C92A52CC3800F8F3C7 /* League.swift in Sources */,
 				7F622BFA2A69F72200B2CBDA /* DictionaryStore.swift in Sources */,
 				7F6555402A45A5B10028AE52 /* MainVC.swift in Sources */,
+				7FC8AEB32A710C7C00DD8820 /* SummonerContainer.xcdatamodeld in Sources */,
 				7FC986C42A52C92000F8F3C7 /* MainVM.swift in Sources */,
 				7FAD0CC82A67AC7C00A1A0C1 /* SelectLocationVC.swift in Sources */,
 				7FC986DD2A52D37400F8F3C7 /* ApiLogger.swift in Sources */,
@@ -350,8 +376,10 @@
 				7F9433FC2A5BD5AF007F8E7D /* LocalFileManager.swift in Sources */,
 				7F65553C2A45A5B10028AE52 /* AppDelegate.swift in Sources */,
 				7F870EBC2A5EA38000E0AE94 /* SummonerVC.swift in Sources */,
+				7FC8AEB62A712C9E00DD8820 /* MatchDetailVC.swift in Sources */,
 				7FEC5C022A68E794000186A7 /* MostChamp.swift in Sources */,
 				7F1C986A2A61145200E00A08 /* String.swift in Sources */,
+				7FC8AEB02A710B2B00DD8820 /* CoreDataService.swift in Sources */,
 				7F9433F82A5B9C04007F8E7D /* NetworkManager.swift in Sources */,
 				7F65553E2A45A5B10028AE52 /* SceneDelegate.swift in Sources */,
 				7FC986D52A52D28200F8F3C7 /* Service.swift in Sources */,
@@ -601,6 +629,19 @@
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		7FC8AEB12A710C7C00DD8820 /* SummonerContainer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7FC8AEB22A710C7C00DD8820 /* SummonerContainer.xcdatamodel */,
+			);
+			currentVersion = 7FC8AEB22A710C7C00DD8820 /* SummonerContainer.xcdatamodel */;
+			path = SummonerContainer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7F6555302A45A5B10028AE52 /* Project object */;
 }

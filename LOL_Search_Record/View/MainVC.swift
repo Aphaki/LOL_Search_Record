@@ -17,13 +17,19 @@ class MainVC: UIViewController {
     
     private var vm = MainVM()
     
+    private var searchedSummonerInfos: [DetailSummonerInfo] = []
+    
     var urlHead: UrlHeadPoint = .kr
     
     //MARK: - View life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.summonerSearchBar.delegate = self
+        self.searchedSummoners.dataSource = self
         self.searchedSummoners.delegate = self
+        // NIB 등록
+        let nib = UINib(nibName: "SearchedSummonerCell", bundle: nil)
+        searchedSummoners.register(nib, forCellReuseIdentifier: "SearchedSummonerCell")
         // UISearchBar에서 키보드를 내리지 않도록 합니다.
         let searchBarTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleSearchBarTap))
         searchBarTapGesture.delegate = self
@@ -34,8 +40,9 @@ class MainVC: UIViewController {
         otherTapGesture.delegate = self
         view.addGestureRecognizer(otherTapGesture)
         
-        // 국가,지역을 채택 정보를 받습니다.
+        // 국가,지역 채택 정보를 받습니다.
         NotificationCenter.default.addObserver(self, selector: #selector(handleDataNotification(_:)), name: NSNotification.Name("UrlHead"), object: nil)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -107,6 +114,10 @@ extension MainVC: UISearchBarDelegate {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let summonerVC = storyboard.instantiateViewController(withIdentifier: "SummonerVC") as! SummonerVC
             summonerVC.summonerInfo = result
+            // 데이터 저장
+            self.searchedSummonerInfos.append(result)
+            searchedSummoners.reloadData()
+            print("MainVC - searchedSummonerInfos counts : \(searchedSummonerInfos.count)")
             // 로딩뷰 제거
             view.alpha = 1.0
             indicaterView.removeFromSuperview()
@@ -121,15 +132,14 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
     // Data Source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return vm.searchedSummonersInfo.count // 셀 갯수
+        return searchedSummonerInfos.count // 셀 갯수
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = searchedSummoners.dequeueReusableCell(withIdentifier: "SearchedSummonerCell", for: indexPath) as? SearchedSummonerCell else {
             fatalError("MainVC - Unable to dequeue searchedSummonerCell")
         }
-        let aSummonerInfo = vm.searchedSummonersInfo[indexPath.row]
+        let aSummonerInfo = searchedSummonerInfos[indexPath.row]
         // 프로필 아이콘
         let iconCode = aSummonerInfo.icon.intToString()
         let iconURL = ImageUrlRouter.icon(code: iconCode).imgUrl
