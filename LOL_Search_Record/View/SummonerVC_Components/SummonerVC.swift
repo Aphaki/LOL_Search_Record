@@ -15,6 +15,7 @@ class SummonerVC: UIViewController {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var summaryTable: UITableView!
     
+    @IBOutlet weak var scrollView: UIScrollView!
     
     var queueIdInfos: [QueueIDInfo] = []
     var summonerInfo: DetailSummonerInfo?
@@ -160,5 +161,22 @@ extension SummonerVC: UITableViewDataSource {
         return cell
     }
 }
+
+//extension SummonerVC: UITableViewDelegate {
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//
+//        guard let cell = summaryTable.dequeueReusableCell(withIdentifier: Constants.cellName.matchSummaryCell.rawValue, for: indexPath) as? MatchSummaryCell else { fatalError("Unable to dequeue MatchSummaryCell") }
+//        // 셀의 높이를 데이터에 따라 동적으로 계산
+//        let data = summonersMatch[indexPath.row]
+//        let cellHeight = (cell.champImg.image?.size.height ?? 0) + 10// 셀 높이를 계산하는 로직
+//        return cellHeight
+//    }
+//
+//    func updateTableViewData() {
+//        summaryTable.reloadData()
+//        // 스크롤뷰의 높이를 테이블뷰 컨텐츠 크기에 따라 동적으로 업데이트
+//        scrollView.contentSize = CGSize(width: scrollView.frame.width, height: summaryTable.contentSize.height)
+//    }
+//}
 
 
