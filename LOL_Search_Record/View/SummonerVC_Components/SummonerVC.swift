@@ -162,6 +162,13 @@ extension SummonerVC: UITableViewDataSource {
     }
 }
 
+extension SummonerVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
+}
+
 //extension SummonerVC: UITableViewDelegate {
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //

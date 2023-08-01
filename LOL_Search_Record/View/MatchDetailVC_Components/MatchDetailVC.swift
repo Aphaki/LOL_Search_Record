@@ -8,6 +8,14 @@
 import UIKit
 
 class MatchDetailVC: UIViewController {
+    
+    //승 or 패
+    @IBOutlet weak var ResultsLable: UILabel!
+    
+    
+    
+    var summonerInfo: SummonerInfo?
+    var participant: [Participant] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()

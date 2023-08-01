@@ -42,7 +42,7 @@ class MainVC: UIViewController {
         
         // 국가,지역 채택 정보를 받습니다.
         NotificationCenter.default.addObserver(self, selector: #selector(handleDataNotification(_:)), name: NSNotification.Name("UrlHead"), object: nil)
-        
+                
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -115,8 +115,12 @@ extension MainVC: UISearchBarDelegate {
             let summonerVC = storyboard.instantiateViewController(withIdentifier: "SummonerVC") as! SummonerVC
             summonerVC.summonerInfo = result
             // 데이터 저장
-            self.searchedSummonerInfos.append(result)
-            searchedSummoners.reloadData()
+            if !searchedSummonerInfos.contains(where: { aSummonerInfo in
+                return aSummonerInfo.summonerName == result.summonerName
+            }) {
+                self.searchedSummonerInfos.append(result)
+                searchedSummoners.reloadData()
+            }
             print("MainVC - searchedSummonerInfos counts : \(searchedSummonerInfos.count)")
             // 로딩뷰 제거
             view.alpha = 1.0
@@ -151,7 +155,7 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
         let tierImg = aSummonerInfo.tier
         cell.tierImage.image = UIImage(named: tierImg.lowercased())
         // 티어 텍스트
-        let tierText = "\(aSummonerInfo.tier)+ \(aSummonerInfo.rank)"
+        let tierText = "\(aSummonerInfo.tier) \(aSummonerInfo.rank)"
         cell.tierText.text = tierText
         
         return cell
