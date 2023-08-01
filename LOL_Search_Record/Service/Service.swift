@@ -228,6 +228,19 @@ class Service {
             summonerList.append(aDetailSummoner)
         }
     }
+    
+    func classifyTeamColor (matchInfo: MatchInfo) -> ([Participant] , [Participant]) {
+        let allMembers = matchInfo.info.participants
+        let blueTeamMembers =
+        allMembers.filter { aMember in
+            return aMember.teamID == 100
+        }
+        let redTeamMembers =
+        allMembers.filter { aMember in
+            return aMember.teamID == 200
+        }
+        return (blueTeamMembers, redTeamMembers)
+    }
 }
 
 protocol ServiceDelegate {

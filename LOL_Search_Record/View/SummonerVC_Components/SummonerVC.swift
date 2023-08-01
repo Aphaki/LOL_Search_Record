@@ -164,7 +164,11 @@ extension SummonerVC: UITableViewDataSource {
 
 extension SummonerVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let selectedMatchInfo = matchInfos[indexPath.row]
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let matchDetailVC = storyboard.instantiateViewController(withIdentifier: "MatchDetailVC") as! MatchDetailVC
+        matchDetailVC.matchInfos = selectedMatchInfo
+        navigationController?.pushViewController(matchDetailVC, animated: true)
     }
     
 }
