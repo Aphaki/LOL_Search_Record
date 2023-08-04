@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F14C0EA2A7B9C9700370671 /* TeamMemberSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F14C0E82A7B9C9700370671 /* TeamMemberSummaryCell.swift */; };
+		7F14C0EB2A7B9C9700370671 /* TeamMemberSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F14C0E92A7B9C9700370671 /* TeamMemberSummaryCell.xib */; };
 		7F1C986A2A61145200E00A08 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1C98692A61145200E00A08 /* String.swift */; };
 		7F1C986C2A61217100E00A08 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1C986B2A61217100E00A08 /* Int.swift */; };
 		7F622BF82A69F6C300B2CBDA /* summoner.json in Resources */ = {isa = PBXBuildFile; fileRef = 7F622BF72A69F6C300B2CBDA /* summoner.json */; };
@@ -53,6 +55,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F14C0E82A7B9C9700370671 /* TeamMemberSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMemberSummaryCell.swift; sourceTree = "<group>"; };
+		7F14C0E92A7B9C9700370671 /* TeamMemberSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamMemberSummaryCell.xib; sourceTree = "<group>"; };
 		7F1C98692A61145200E00A08 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		7F1C986B2A61217100E00A08 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		7F622BF72A69F6C300B2CBDA /* summoner.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = summoner.json; sourceTree = "<group>"; };
@@ -206,6 +210,8 @@
 			isa = PBXGroup;
 			children = (
 				7FC8AEB52A712C9E00DD8820 /* MatchDetailVC.swift */,
+				7F14C0E82A7B9C9700370671 /* TeamMemberSummaryCell.swift */,
+				7F14C0E92A7B9C9700370671 /* TeamMemberSummaryCell.xib */,
 			);
 			path = MatchDetailVC_Components;
 			sourceTree = "<group>";
@@ -337,6 +343,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F14C0EB2A7B9C9700370671 /* TeamMemberSummaryCell.xib in Resources */,
 				7FC372412A56BD1A0045ED4D /* MatchSummaryCell.xib in Resources */,
 				7F6555482A45A5B20028AE52 /* LaunchScreen.storyboard in Resources */,
 				7F6555452A45A5B20028AE52 /* Assets.xcassets in Resources */,
@@ -356,6 +363,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FC986C92A52CC3800F8F3C7 /* League.swift in Sources */,
+				7F14C0EA2A7B9C9700370671 /* TeamMemberSummaryCell.swift in Sources */,
 				7F622BFA2A69F72200B2CBDA /* DictionaryStore.swift in Sources */,
 				7F6555402A45A5B10028AE52 /* MainVC.swift in Sources */,
 				7FC986C42A52C92000F8F3C7 /* MainVM.swift in Sources */,

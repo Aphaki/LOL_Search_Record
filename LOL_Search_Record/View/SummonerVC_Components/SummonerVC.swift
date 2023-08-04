@@ -30,7 +30,7 @@ class SummonerVC: UIViewController {
         super.viewDidLoad()
         // 테이블뷰(데이터소스, 델리겟) + 셀(NIb)
         self.summaryTable.dataSource = self
-//        self.summaryTable.delegate = self
+        self.summaryTable.delegate = self
         let nib = UINib(nibName: "MatchSummaryCell", bundle: nil)
         summaryTable.register(nib, forCellReuseIdentifier: "MatchSummaryCell")
         //큐 사전 불러오기
@@ -95,12 +95,12 @@ extension SummonerVC: UITableViewDataSource {
         cell.winLabel.textColor = shortInfo.win ? .white : .black
         // 챔피언 이미지
         let championImgUrl = ImageUrlRouter.champion(name: shortInfo.championName).imgUrl
-        cell.champImg.loadImage(from: championImgUrl, folderName: "ChampionImgSmall", imgName: shortInfo.championName)
+        cell.champImg.loadImage(from: championImgUrl, folderName: Constants.folderName.championImgSmall.rawValue, imgName: shortInfo.championName)
         // 스펠 이미지
         let spell1ImgUrl = ImageUrlRouter.spell(name: DictionaryStore.shared.spellStore[shortInfo.summoner1ID.intToString()]!).imgUrl
         let spell2ImgUrl = ImageUrlRouter.spell(name: DictionaryStore.shared.spellStore[shortInfo.summoner2ID.intToString()]!).imgUrl
-        cell.spellOne.loadImage(from: spell1ImgUrl, folderName: "SpellImg", imgName: shortInfo.summoner1ID.intToString())
-        cell.spellTwo.loadImage(from: spell2ImgUrl, folderName: "SpellImg", imgName: shortInfo.summoner2ID.intToString())
+        cell.spellOne.loadImage(from: spell1ImgUrl, folderName: Constants.folderName.spellImg.rawValue, imgName: shortInfo.summoner1ID.intToString())
+        cell.spellTwo.loadImage(from: spell2ImgUrl, folderName: Constants.folderName.spellImg.rawValue, imgName: shortInfo.summoner2ID.intToString())
         // KDA
         let kill = shortInfo.kills.intToString()
         let death = shortInfo.deaths.intToString()
@@ -113,31 +113,31 @@ extension SummonerVC: UITableViewDataSource {
         // 아이템 이미지 x7
         let item0 = shortInfo.item0.intToString()
         let item0Url = ImageUrlRouter.item(name: item0).imgUrl
-        cell.item0.loadImage(from: item0Url, folderName: "Item", imgName: item0)
+        cell.item0.loadImage(from: item0Url, folderName: Constants.folderName.item.rawValue, imgName: item0)
         
         let item1 = shortInfo.item1.intToString()
         let item1Url = ImageUrlRouter.item(name: item1).imgUrl
-        cell.item1.loadImage(from: item1Url, folderName: "Item", imgName: item1)
+        cell.item1.loadImage(from: item1Url, folderName: Constants.folderName.item.rawValue, imgName: item1)
         
         let item2 = shortInfo.item2.intToString()
         let item2Url = ImageUrlRouter.item(name: item2).imgUrl
-        cell.item2.loadImage(from: item2Url, folderName: "Item", imgName: item2)
+        cell.item2.loadImage(from: item2Url, folderName: Constants.folderName.item.rawValue, imgName: item2)
         
         let item3 = shortInfo.item3.intToString()
         let item3Url = ImageUrlRouter.item(name: item3).imgUrl
-        cell.item3.loadImage(from: item3Url, folderName: "Item", imgName: item3)
+        cell.item3.loadImage(from: item3Url, folderName: Constants.folderName.item.rawValue, imgName: item3)
         
         let item4 = shortInfo.item4.intToString()
         let item4Url = ImageUrlRouter.item(name: item4).imgUrl
-        cell.item4.loadImage(from: item4Url, folderName: "Item", imgName: item4)
+        cell.item4.loadImage(from: item4Url, folderName: Constants.folderName.item.rawValue, imgName: item4)
         
         let item5 = shortInfo.item5.intToString()
         let item5Url = ImageUrlRouter.item(name: item5).imgUrl
-        cell.item5.loadImage(from: item5Url, folderName: "Item", imgName: item5)
+        cell.item5.loadImage(from: item5Url, folderName: Constants.folderName.item.rawValue, imgName: item5)
         
         let item6 = shortInfo.item6.intToString()
         let item6Url = ImageUrlRouter.item(name: item6).imgUrl
-        cell.item6.loadImage(from: item6Url, folderName: "Item", imgName: item6)
+        cell.item6.loadImage(from: item6Url, folderName: Constants.folderName.item.rawValue, imgName: item6)
         
         // 게임 시간
         let matchInfo = matchInfos[indexPath.row]
@@ -167,7 +167,7 @@ extension SummonerVC: UITableViewDelegate {
         let selectedMatchInfo = matchInfos[indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let matchDetailVC = storyboard.instantiateViewController(withIdentifier: "MatchDetailVC") as! MatchDetailVC
-        matchDetailVC.matchInfos = selectedMatchInfo
+        matchDetailVC.matchInfo = selectedMatchInfo
         navigationController?.pushViewController(matchDetailVC, animated: true)
     }
     

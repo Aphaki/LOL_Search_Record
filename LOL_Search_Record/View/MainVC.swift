@@ -147,7 +147,7 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
         // 프로필 아이콘
         let iconCode = aSummonerInfo.icon.intToString()
         let iconURL = ImageUrlRouter.icon(code: iconCode).imgUrl
-        cell.iconImage.loadImage(from: iconURL, folderName: "profileicon", imgName: iconCode)
+        cell.iconImage.loadImage(from: iconURL, folderName: Constants.folderName.icon.rawValue, imgName: iconCode)
         // 소환사 이름
         let aSummonerName = aSummonerInfo.summonerName
         cell.summonerName.text = aSummonerName
