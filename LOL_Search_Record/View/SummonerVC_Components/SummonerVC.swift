@@ -168,6 +168,7 @@ extension SummonerVC: UITableViewDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let matchDetailVC = storyboard.instantiateViewController(withIdentifier: "MatchDetailVC") as! MatchDetailVC
         matchDetailVC.matchInfo = selectedMatchInfo
+        matchDetailVC.summonerInfo = summonerInfo?.summonerInfo
         navigationController?.pushViewController(matchDetailVC, animated: true)
     }
     

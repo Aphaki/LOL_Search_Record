@@ -51,6 +51,7 @@
 		7FC986E12A52D44B00F8F3C7 /* UrlHeadPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FC986E02A52D44B00F8F3C7 /* UrlHeadPoint.swift */; };
 		7FEC5C022A68E794000186A7 /* MostChamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEC5C012A68E794000186A7 /* MostChamp.swift */; };
 		7FEC5C042A694FC2000186A7 /* ImageUrlRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEC5C032A694FC2000186A7 /* ImageUrlRouter.swift */; };
+		7FF36F262A7E54EC00898036 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF36F252A7E54EC00898036 /* UIColor.swift */; };
 		7FFC6E8D2A498FE000565579 /* Caprasimo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FFC6E8C2A498FE000565579 /* Caprasimo-Regular.ttf */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +101,7 @@
 		7FC986E02A52D44B00F8F3C7 /* UrlHeadPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlHeadPoint.swift; sourceTree = "<group>"; };
 		7FEC5C012A68E794000186A7 /* MostChamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostChamp.swift; sourceTree = "<group>"; };
 		7FEC5C032A694FC2000186A7 /* ImageUrlRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUrlRouter.swift; sourceTree = "<group>"; };
+		7FF36F252A7E54EC00898036 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		7FFC6E8C2A498FE000565579 /* Caprasimo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Caprasimo-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +124,7 @@
 				7F1C98692A61145200E00A08 /* String.swift */,
 				7F1C986B2A61217100E00A08 /* Int.swift */,
 				7F8510512A6FD8BE001B39C6 /* Double.swift */,
+				7FF36F252A7E54EC00898036 /* UIColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				7FEC5C042A694FC2000186A7 /* ImageUrlRouter.swift in Sources */,
 				7F9433FC2A5BD5AF007F8E7D /* LocalFileManager.swift in Sources */,
 				7F65553C2A45A5B10028AE52 /* AppDelegate.swift in Sources */,
+				7FF36F262A7E54EC00898036 /* UIColor.swift in Sources */,
 				7F870EBC2A5EA38000E0AE94 /* SummonerVC.swift in Sources */,
 				7FC8AEB62A712C9E00DD8820 /* MatchDetailVC.swift in Sources */,
 				7FEC5C022A68E794000186A7 /* MostChamp.swift in Sources */,

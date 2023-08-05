@@ -15,6 +15,23 @@ class MatchDetailVC: UIViewController {
     @IBOutlet weak var teamTableA: UITableView!
     @IBOutlet weak var teamTableB: UITableView!
     
+    @IBOutlet weak var blueTeamResult: UILabel!
+    @IBOutlet weak var blueTeamKill: UILabel!
+    @IBOutlet weak var blueTeamDeath: UILabel!
+    @IBOutlet weak var blueTeamAssist: UILabel!
+    @IBOutlet weak var blueTeamDragon: UILabel!
+    @IBOutlet weak var blueTeamBarron: UILabel!
+    @IBOutlet weak var blueTeamTower: UILabel!
+    
+    @IBOutlet weak var redTeamResult: UILabel!
+    @IBOutlet weak var redTeamKill: UILabel!
+    @IBOutlet weak var redTeamDeath: UILabel!
+    @IBOutlet weak var redTeamAssist: UILabel!
+    @IBOutlet weak var redTeamDragon: UILabel!
+    @IBOutlet weak var redTeamBarron: UILabel!
+    @IBOutlet weak var redTeamTower: UILabel!
+    
+    
     //MARK: - Recieved Property
     // 매치 정보 표기
     var matchInfo: MatchInfo?
@@ -38,15 +55,62 @@ class MatchDetailVC: UIViewController {
         settingWinTeamId()
         settingSummonerWinBool()
         
-        resultsLabelSetting()
         self.teamTableA.dataSource = self
         self.teamTableB.dataSource = self
         let nib = UINib(nibName: "TeamMemberSummaryCell", bundle: nil)
         teamTableA.register(nib, forCellReuseIdentifier: "TeamMemberSummaryCell")
         teamTableB.register(nib, forCellReuseIdentifier: "TeamMemberSummaryCell")
         
+        resultsLabelSetting()
+        teamResultLabelsSetting()
+        
         
     }
+    //MARK: - Draw UI
+    func resultsLabelSetting() {
+        guard let summonerWinBool = summonerWinBool else { fatalError("summonerWinBool - is nil") }
+        resultsLable.textColor = UIColor.theme.pureWhite
+        if summonerWinBool {
+            resultsLable.text = "Win"
+            resultsLable.backgroundColor = .blue
+        } else {
+            resultsLable.text = "Lose"
+            resultsLable.backgroundColor = .red
+        }
+    }
+    func teamResultLabelsSetting() {
+        guard let matchInfo = matchInfo else { return }
+        let blueTeamInfo = matchInfo.info.teams[0]
+        let redTeamInfo = matchInfo.info.teams[1]
+        blueTeamResult.textColor = UIColor.theme.pureWhite
+        redTeamResult.textColor = UIColor.theme.pureWhite
+        if blueTeamInfo.win {
+            blueTeamResult.text = "승리"
+            redTeamResult.text = "패배"
+        } else {
+            blueTeamResult.text = "패배"
+            redTeamResult.text = "승리"
+        }
+        let blueTeamMembers = self.blueTeamMember
+        let blueTeamKDA = returnedKDA(teamMembers: blueTeamMembers)
+        let redTeamMembers = self.redTeamMember
+        let redTeamKDA = returnedKDA(teamMembers: redTeamMembers)
+        blueTeamKill.text = blueTeamKDA.0.intToString()
+        blueTeamDeath.text = blueTeamKDA.1.intToString()
+        blueTeamAssist.text = blueTeamKDA.2.intToString()
+        blueTeamDragon.text = blueTeamInfo.objectives.dragon.kills.intToString()
+        blueTeamBarron.text = blueTeamInfo.objectives.baron.kills.intToString()
+        blueTeamTower.text = blueTeamInfo.objectives.tower.kills.intToString()
+        
+        redTeamKill.text = redTeamKDA.0.intToString()
+        redTeamDeath.text = redTeamKDA.1.intToString()
+        redTeamAssist.text = redTeamKDA.2.intToString()
+        redTeamDragon.text = redTeamInfo.objectives.dragon.kills.intToString()
+        redTeamBarron.text = redTeamInfo.objectives.baron.kills.intToString()
+        redTeamTower.text = redTeamInfo.objectives.tower.kills.intToString()
+    }
+    
+    //MARK: - Setting property method
     func settingWinTeamId() {
         guard let matchInfo = matchInfo else { return }
         let winTeam =
@@ -56,7 +120,7 @@ class MatchDetailVC: UIViewController {
         self.winTeamId = winTeam.teamID
     }
     func settingSummonerWinBool() {
-        guard let safeSummonerInfo = summonerInfo else { return }
+        guard let safeSummonerInfo = summonerInfo else { fatalError("summonerWinBool - is nil") }
         guard let matchInfo = matchInfo else { return }
         
         let summonerTeamId =
@@ -79,17 +143,7 @@ class MatchDetailVC: UIViewController {
         }
         self.mostDamage = totalDealtArray.max()!
     }
-    func resultsLabelSetting() {
-        guard let summonerWinBool = summonerWinBool else { return }
-        if summonerWinBool {
-            resultsLable.text = "Win"
-            resultsLable.backgroundColor = .blue
-        } else {
-            resultsLable.text = "Lose"
-            resultsLable.backgroundColor = .red
-        }
-        
-    }
+    
     func settingTeamMember() {
         guard let safeMatchInfos = matchInfo else { return }
         let classifiedTeamMember = service.classifyTeamColor(matchInfo: safeMatchInfos)
@@ -98,6 +152,10 @@ class MatchDetailVC: UIViewController {
     }
     
     private func settingTableViewData(cell: TeamMemberSummaryCell, aMember: Participant) {
+        guard let summonerInfo = summonerInfo else { fatalError("summonerInfo is nil") }
+        if aMember.championName == summonerInfo.name {
+            cell.tintColor = UIColor.green
+        }
         // 챔피언 이미지
         let champImgUrl = aMember.championName.toChampionSmallImgUrl()
         cell.champImg.loadImage(from: champImgUrl, folderName: Constants.folderName.championImgSmall.rawValue, imgName: aMember.championName)
@@ -161,6 +219,25 @@ class MatchDetailVC: UIViewController {
         cell.damageBar.progress = portion
         cell.damageText.text = dealt.description
     }
+    
+    func returnedKDA(teamMembers: [Participant]) -> (Int, Int, Int) {
+        let killArray =
+        teamMembers.map { aMember in
+            return aMember.kills
+        }
+        let deathArray =
+        teamMembers.map { aMemeber in
+            return aMemeber.deaths
+        }
+        let assistArray =
+        teamMembers.map { aMember in
+            return aMember.assists
+        }
+        let kills = killArray.reduce(0, +)
+        let deaths = deathArray.reduce(0, +)
+        let assists = assistArray.reduce(0, +)
+        return (kills, deaths, assists)
+    }
 }
 
 extension MatchDetailVC: UITableViewDataSource {
@@ -174,15 +251,21 @@ extension MatchDetailVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let summonerInfo = summonerInfo else { fatalError("summonerInfo is nil") }
         let cell = tableView.dequeueReusableCell(withIdentifier: "TeamMemberSummaryCell", for: indexPath) as! TeamMemberSummaryCell
-        
         //Blue Team 데이터 대입
         if tableView == teamTableA {
             let aMember = blueTeamMember[indexPath.row]
+            if aMember.summonerName == summonerInfo.name {
+                cell.backgroundColor = .green
+            }
             settingTableViewData(cell: cell, aMember: aMember)
         } else if tableView == teamTableB {
-            let aMemeber = redTeamMember[indexPath.row]
-            settingTableViewData(cell: cell, aMember: aMemeber)
+            let aMember = redTeamMember[indexPath.row]
+            if aMember.summonerName == summonerInfo.name {
+                cell.backgroundColor = .green
+            }
+            settingTableViewData(cell: cell, aMember: aMember)
         }
         
         return cell
