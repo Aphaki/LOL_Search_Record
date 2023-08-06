@@ -21,8 +21,6 @@ class ResultTableHeaderView: UITableViewHeaderFooterView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        self.teamDeaths.textColor = .red
     }
-    
-
 }

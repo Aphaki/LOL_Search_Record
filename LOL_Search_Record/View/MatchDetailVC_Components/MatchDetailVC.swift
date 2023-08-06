@@ -13,23 +13,6 @@ class MatchDetailVC: UIViewController {
     //승 or 패
     @IBOutlet weak var resultsLable: UILabel!
     @IBOutlet weak var teamTableA: UITableView!
-    @IBOutlet weak var teamTableB: UITableView!
-    
-    @IBOutlet weak var blueTeamResult: UILabel!
-    @IBOutlet weak var blueTeamKill: UILabel!
-    @IBOutlet weak var blueTeamDeath: UILabel!
-    @IBOutlet weak var blueTeamAssist: UILabel!
-    @IBOutlet weak var blueTeamDragon: UILabel!
-    @IBOutlet weak var blueTeamBarron: UILabel!
-    @IBOutlet weak var blueTeamTower: UILabel!
-    
-    @IBOutlet weak var redTeamResult: UILabel!
-    @IBOutlet weak var redTeamKill: UILabel!
-    @IBOutlet weak var redTeamDeath: UILabel!
-    @IBOutlet weak var redTeamAssist: UILabel!
-    @IBOutlet weak var redTeamDragon: UILabel!
-    @IBOutlet weak var redTeamBarron: UILabel!
-    @IBOutlet weak var redTeamTower: UILabel!
     
     
     //MARK: - Recieved Property
@@ -56,13 +39,13 @@ class MatchDetailVC: UIViewController {
         settingSummonerWinBool()
         
         self.teamTableA.dataSource = self
-        self.teamTableB.dataSource = self
         let nib = UINib(nibName: "TeamMemberSummaryCell", bundle: nil)
+        let nibHeader = UINib(nibName: "ResultTableHeaderView", bundle: nil)
         teamTableA.register(nib, forCellReuseIdentifier: "TeamMemberSummaryCell")
-        teamTableB.register(nib, forCellReuseIdentifier: "TeamMemberSummaryCell")
+        teamTableA.register(nibHeader, forHeaderFooterViewReuseIdentifier: "ResultTableHeaderView")
         
         resultsLabelSetting()
-        teamResultLabelsSetting()
+//        teamResultLabelsSetting()
         
         
     }
@@ -78,37 +61,37 @@ class MatchDetailVC: UIViewController {
             resultsLable.backgroundColor = .red
         }
     }
-    func teamResultLabelsSetting() {
-        guard let matchInfo = matchInfo else { return }
-        let blueTeamInfo = matchInfo.info.teams[0]
-        let redTeamInfo = matchInfo.info.teams[1]
-        blueTeamResult.textColor = UIColor.theme.pureWhite
-        redTeamResult.textColor = UIColor.theme.pureWhite
-        if blueTeamInfo.win {
-            blueTeamResult.text = "승리"
-            redTeamResult.text = "패배"
-        } else {
-            blueTeamResult.text = "패배"
-            redTeamResult.text = "승리"
-        }
-        let blueTeamMembers = self.blueTeamMember
-        let blueTeamKDA = returnedKDA(teamMembers: blueTeamMembers)
-        let redTeamMembers = self.redTeamMember
-        let redTeamKDA = returnedKDA(teamMembers: redTeamMembers)
-        blueTeamKill.text = blueTeamKDA.0.intToString()
-        blueTeamDeath.text = blueTeamKDA.1.intToString()
-        blueTeamAssist.text = blueTeamKDA.2.intToString()
-        blueTeamDragon.text = blueTeamInfo.objectives.dragon.kills.intToString()
-        blueTeamBarron.text = blueTeamInfo.objectives.baron.kills.intToString()
-        blueTeamTower.text = blueTeamInfo.objectives.tower.kills.intToString()
-        
-        redTeamKill.text = redTeamKDA.0.intToString()
-        redTeamDeath.text = redTeamKDA.1.intToString()
-        redTeamAssist.text = redTeamKDA.2.intToString()
-        redTeamDragon.text = redTeamInfo.objectives.dragon.kills.intToString()
-        redTeamBarron.text = redTeamInfo.objectives.baron.kills.intToString()
-        redTeamTower.text = redTeamInfo.objectives.tower.kills.intToString()
-    }
+//    func teamResultLabelsSetting() {
+//        guard let matchInfo = matchInfo else { return }
+//        let blueTeamInfo = matchInfo.info.teams[0]
+//        let redTeamInfo = matchInfo.info.teams[1]
+//        blueTeamResult.textColor = UIColor.theme.pureWhite
+//        redTeamResult.textColor = UIColor.theme.pureWhite
+//        if blueTeamInfo.win {
+//            blueTeamResult.text = "승리"
+//            redTeamResult.text = "패배"
+//        } else {
+//            blueTeamResult.text = "패배"
+//            redTeamResult.text = "승리"
+//        }
+//        let blueTeamMembers = self.blueTeamMember
+//        let blueTeamKDA = returnedKDA(teamMembers: blueTeamMembers)
+//        let redTeamMembers = self.redTeamMember
+//        let redTeamKDA = returnedKDA(teamMembers: redTeamMembers)
+//        blueTeamKill.text = blueTeamKDA.0.intToString()
+//        blueTeamDeath.text = blueTeamKDA.1.intToString()
+//        blueTeamAssist.text = blueTeamKDA.2.intToString()
+//        blueTeamDragon.text = blueTeamInfo.objectives.dragon.kills.intToString()
+//        blueTeamBarron.text = blueTeamInfo.objectives.baron.kills.intToString()
+//        blueTeamTower.text = blueTeamInfo.objectives.tower.kills.intToString()
+//
+//        redTeamKill.text = redTeamKDA.0.intToString()
+//        redTeamDeath.text = redTeamKDA.1.intToString()
+//        redTeamAssist.text = redTeamKDA.2.intToString()
+//        redTeamDragon.text = redTeamInfo.objectives.dragon.kills.intToString()
+//        redTeamBarron.text = redTeamInfo.objectives.baron.kills.intToString()
+//        redTeamTower.text = redTeamInfo.objectives.tower.kills.intToString()
+//    }
     
     //MARK: - Setting property method
     func settingWinTeamId() {
@@ -242,25 +225,26 @@ class MatchDetailVC: UIViewController {
 
 extension MatchDetailVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == teamTableA {
+        switch section {
+        case 0:
             return blueTeamMember.count
-        } else if tableView == teamTableB {
+        default:
             return redTeamMember.count
         }
-        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let summonerInfo = summonerInfo else { fatalError("summonerInfo is nil") }
         let cell = tableView.dequeueReusableCell(withIdentifier: "TeamMemberSummaryCell", for: indexPath) as! TeamMemberSummaryCell
+        
         //Blue Team 데이터 대입
-        if tableView == teamTableA {
+        if indexPath.section == 0 {
             let aMember = blueTeamMember[indexPath.row]
             if aMember.summonerName == summonerInfo.name {
                 cell.backgroundColor = .green
             }
             settingTableViewData(cell: cell, aMember: aMember)
-        } else if tableView == teamTableB {
+        } else {
             let aMember = redTeamMember[indexPath.row]
             if aMember.summonerName == summonerInfo.name {
                 cell.backgroundColor = .green
@@ -276,13 +260,53 @@ extension MatchDetailVC: UITableViewDataSource {
 
 extension MatchDetailVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
+        guard let matchInfo = matchInfo else { return nil }
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ResultTableHeaderView") as? ResultTableHeaderView else { fatalError("MatchDetailVC - header error") }
-//        if tableView == teamTableA {
-//            header.resultLabel.text =
-//        }
+        let blueTeamInfo = matchInfo.info.teams[0]
+        let redTeamInfo = matchInfo.info.teams[1]
+        switch section {
+        case 0:
+            if blueTeamInfo.win {
+                header.resultLabel.text = "승리"
+            } else {
+                header.resultLabel.text = "패배"
+            }
+            header.resultLabel.textColor = UIColor.theme.pureWhite
+            let blueTeamMembers = self.blueTeamMember
+            let blueTeamKDA = returnedKDA(teamMembers: blueTeamMembers)
+            
+            header.teamKills.text = blueTeamKDA.0.intToString()
+            header.teamDeaths.text = blueTeamKDA.1.intToString()
+            header.teamTower.text = blueTeamKDA.2.intToString()
+            header.teamDragon.text = blueTeamInfo.objectives.dragon.kills.intToString()
+            header.teambarron.text = blueTeamInfo.objectives.baron.kills.intToString()
+            header.teamTower.text = blueTeamInfo.objectives.tower.kills.intToString()
+            return header
+        default:
+            if redTeamInfo.win {
+                header.resultLabel.text = "승리"
+            } else {
+                header.resultLabel.text = "패배"
+            }
+            header.resultLabel.textColor = UIColor.theme.pureWhite
+            
+            let redTeamMembers = self.redTeamMember
+            let redTeamKDA = returnedKDA(teamMembers: redTeamMembers)
+            
+            header.teamKills.text = redTeamKDA.0.intToString()
+            header.teamDeaths.text = redTeamKDA.1.intToString()
+            header.teamAssist.text = redTeamKDA.2.intToString()
+            header.teamDragon.text = redTeamInfo.objectives.dragon.kills.intToString()
+            header.teambarron.text = redTeamInfo.objectives.baron.kills.intToString()
+            header.teamTower.text = redTeamInfo.objectives.tower.kills.intToString()
+            
+            return header
+        }
         
-        return header
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
     }
     
 }
