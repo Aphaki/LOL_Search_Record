@@ -273,3 +273,16 @@ extension MatchDetailVC: UITableViewDataSource {
     
     
 }
+
+extension MatchDetailVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ResultTableHeaderView") as? ResultTableHeaderView else { fatalError("MatchDetailVC - header error") }
+//        if tableView == teamTableA {
+//            header.resultLabel.text =
+//        }
+        
+        return header
+    }
+    
+}

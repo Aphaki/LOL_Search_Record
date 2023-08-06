@@ -52,6 +52,8 @@
 		7FEC5C022A68E794000186A7 /* MostChamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEC5C012A68E794000186A7 /* MostChamp.swift */; };
 		7FEC5C042A694FC2000186A7 /* ImageUrlRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEC5C032A694FC2000186A7 /* ImageUrlRouter.swift */; };
 		7FF36F262A7E54EC00898036 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF36F252A7E54EC00898036 /* UIColor.swift */; };
+		7FF36F282A7E945100898036 /* ResultTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FF36F272A7E945100898036 /* ResultTableHeaderView.swift */; };
+		7FF36F2C2A7E94C000898036 /* ResultTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7FF36F2B2A7E94C000898036 /* ResultTableHeaderView.xib */; };
 		7FFC6E8D2A498FE000565579 /* Caprasimo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FFC6E8C2A498FE000565579 /* Caprasimo-Regular.ttf */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +104,8 @@
 		7FEC5C012A68E794000186A7 /* MostChamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostChamp.swift; sourceTree = "<group>"; };
 		7FEC5C032A694FC2000186A7 /* ImageUrlRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUrlRouter.swift; sourceTree = "<group>"; };
 		7FF36F252A7E54EC00898036 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		7FF36F272A7E945100898036 /* ResultTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableHeaderView.swift; sourceTree = "<group>"; };
+		7FF36F2B2A7E94C000898036 /* ResultTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultTableHeaderView.xib; sourceTree = "<group>"; };
 		7FFC6E8C2A498FE000565579 /* Caprasimo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Caprasimo-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -215,6 +219,8 @@
 				7FC8AEB52A712C9E00DD8820 /* MatchDetailVC.swift */,
 				7F14C0E82A7B9C9700370671 /* TeamMemberSummaryCell.swift */,
 				7F14C0E92A7B9C9700370671 /* TeamMemberSummaryCell.xib */,
+				7FF36F272A7E945100898036 /* ResultTableHeaderView.swift */,
+				7FF36F2B2A7E94C000898036 /* ResultTableHeaderView.xib */,
 			);
 			path = MatchDetailVC_Components;
 			sourceTree = "<group>";
@@ -351,6 +357,7 @@
 				7F6555482A45A5B20028AE52 /* LaunchScreen.storyboard in Resources */,
 				7F6555452A45A5B20028AE52 /* Assets.xcassets in Resources */,
 				7F622BF82A69F6C300B2CBDA /* summoner.json in Resources */,
+				7FF36F2C2A7E94C000898036 /* ResultTableHeaderView.xib in Resources */,
 				7F6555432A45A5B10028AE52 /* Main.storyboard in Resources */,
 				7FFC6E8D2A498FE000565579 /* Caprasimo-Regular.ttf in Resources */,
 				7F8510562A707C5B001B39C6 /* queueId.json in Resources */,
@@ -381,6 +388,7 @@
 				7FC986E12A52D44B00F8F3C7 /* UrlHeadPoint.swift in Sources */,
 				7FEC5C042A694FC2000186A7 /* ImageUrlRouter.swift in Sources */,
 				7F9433FC2A5BD5AF007F8E7D /* LocalFileManager.swift in Sources */,
+				7FF36F282A7E945100898036 /* ResultTableHeaderView.swift in Sources */,
 				7F65553C2A45A5B10028AE52 /* AppDelegate.swift in Sources */,
 				7FF36F262A7E54EC00898036 /* UIColor.swift in Sources */,
 				7F870EBC2A5EA38000E0AE94 /* SummonerVC.swift in Sources */,
