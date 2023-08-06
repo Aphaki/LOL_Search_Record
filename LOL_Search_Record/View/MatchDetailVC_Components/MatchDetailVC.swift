@@ -39,6 +39,7 @@ class MatchDetailVC: UIViewController {
         settingSummonerWinBool()
         
         self.teamTableA.dataSource = self
+        self.teamTableA.delegate = self
         let nib = UINib(nibName: "TeamMemberSummaryCell", bundle: nil)
         let nibHeader = UINib(nibName: "ResultTableHeaderView", bundle: nil)
         teamTableA.register(nib, forCellReuseIdentifier: "TeamMemberSummaryCell")
@@ -168,32 +169,32 @@ class MatchDetailVC: UIViewController {
                              imgName: item1Code)
         let item2Code = aMember.item1.intToString()
         let item2Url = ImageUrlRouter.item(name: item2Code).imgUrl
-        cell.item1.loadImage(from: item2Url,
+        cell.item2.loadImage(from: item2Url,
                              folderName: Constants.folderName.item.rawValue,
                              imgName: item2Code)
         let item3Code = aMember.item2.intToString()
         let item3Url = ImageUrlRouter.item(name: item3Code).imgUrl
-        cell.item1.loadImage(from: item3Url,
+        cell.item3.loadImage(from: item3Url,
                              folderName: Constants.folderName.item.rawValue,
                              imgName: item3Code)
         let item4Code = aMember.item3.intToString()
         let item4Url = ImageUrlRouter.item(name: item4Code).imgUrl
-        cell.item1.loadImage(from: item4Url,
+        cell.item4.loadImage(from: item4Url,
                              folderName: Constants.folderName.item.rawValue,
                              imgName: item4Code)
         let item5Code = aMember.item4.intToString()
         let item5Url = ImageUrlRouter.item(name: item5Code).imgUrl
-        cell.item1.loadImage(from: item5Url,
+        cell.item5.loadImage(from: item5Url,
                              folderName: Constants.folderName.item.rawValue,
                              imgName: item5Code)
         let item6Code = aMember.item5.intToString()
         let item6Url = ImageUrlRouter.item(name: item6Code).imgUrl
-        cell.item1.loadImage(from: item6Url,
+        cell.item6.loadImage(from: item6Url,
                              folderName: Constants.folderName.item.rawValue,
                              imgName: item6Code)
         let item7Code = aMember.item6.intToString()
         let item7Url = ImageUrlRouter.item(name: item7Code).imgUrl
-        cell.item1.loadImage(from: item7Url,
+        cell.item7.loadImage(from: item7Url,
                              folderName: Constants.folderName.item.rawValue,
                              imgName: item7Code)
         // 딜량
@@ -261,34 +262,39 @@ extension MatchDetailVC: UITableViewDataSource {
 extension MatchDetailVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let matchInfo = matchInfo else { return nil }
-        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ResultTableHeaderView") as? ResultTableHeaderView else { fatalError("MatchDetailVC - header error") }
+        guard let header = teamTableA.dequeueReusableHeaderFooterView(withIdentifier: "ResultTableHeaderView") as? ResultTableHeaderView else { fatalError("MatchDetailVC - header error") }
         let blueTeamInfo = matchInfo.info.teams[0]
         let redTeamInfo = matchInfo.info.teams[1]
         switch section {
         case 0:
+            header.backgroundColor = .blue
             if blueTeamInfo.win {
                 header.resultLabel.text = "승리"
             } else {
                 header.resultLabel.text = "패배"
             }
             header.resultLabel.textColor = UIColor.theme.pureWhite
+            header.teamLabel.text = "BLUE팀"
+            
             let blueTeamMembers = self.blueTeamMember
             let blueTeamKDA = returnedKDA(teamMembers: blueTeamMembers)
             
             header.teamKills.text = blueTeamKDA.0.intToString()
             header.teamDeaths.text = blueTeamKDA.1.intToString()
-            header.teamTower.text = blueTeamKDA.2.intToString()
+            header.teamAssist.text = blueTeamKDA.2.intToString()
             header.teamDragon.text = blueTeamInfo.objectives.dragon.kills.intToString()
             header.teambarron.text = blueTeamInfo.objectives.baron.kills.intToString()
             header.teamTower.text = blueTeamInfo.objectives.tower.kills.intToString()
             return header
         default:
+            header.backgroundColor = .red
             if redTeamInfo.win {
                 header.resultLabel.text = "승리"
             } else {
                 header.resultLabel.text = "패배"
             }
             header.resultLabel.textColor = UIColor.theme.pureWhite
+            header.teamLabel.text = "RED팀"
             
             let redTeamMembers = self.redTeamMember
             let redTeamKDA = returnedKDA(teamMembers: redTeamMembers)
