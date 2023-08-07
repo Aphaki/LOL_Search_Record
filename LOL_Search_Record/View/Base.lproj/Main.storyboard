@@ -286,50 +286,27 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aRj-2b-Vbt" userLabel="ViewContainer">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="699"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="a02-is-Gmr">
+                                            <tableView clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="BXl-aB-zkf">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="699"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="aWV-Ec-Yck" userLabel="A Team Info">
-                                                        <rect key="frame" x="0.0" y="0.0" width="393" height="699"/>
-                                                        <subviews>
-                                                            <tableView clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="BXl-aB-zkf">
-                                                                <rect key="frame" x="0.0" y="0.0" width="393" height="699"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="270" id="5bB-8V-Dnh"/>
-                                                                </constraints>
-                                                                <prototypes>
-                                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TeamMemberSummaryCell" rowHeight="58" id="5hX-ZS-3s4">
-                                                                        <rect key="frame" x="0.0" y="50" width="393" height="58"/>
-                                                                        <autoresizingMask key="autoresizingMask"/>
-                                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5hX-ZS-3s4" id="NQx-2Y-lhU">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="393" height="58"/>
-                                                                            <autoresizingMask key="autoresizingMask"/>
-                                                                        </tableViewCellContentView>
-                                                                    </tableViewCell>
-                                                                </prototypes>
-                                                            </tableView>
-                                                        </subviews>
-                                                        <constraints>
-                                                            <constraint firstAttribute="bottom" secondItem="BXl-aB-zkf" secondAttribute="bottom" id="Jd2-2N-uz3"/>
-                                                            <constraint firstItem="BXl-aB-zkf" firstAttribute="leading" secondItem="aWV-Ec-Yck" secondAttribute="leading" id="OAq-Go-6wB"/>
-                                                            <constraint firstAttribute="trailing" secondItem="BXl-aB-zkf" secondAttribute="trailing" id="vg8-IA-T5Q"/>
-                                                        </constraints>
-                                                    </stackView>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="aWV-Ec-Yck" secondAttribute="trailing" id="Lw0-Qt-WfY"/>
-                                                    <constraint firstItem="aWV-Ec-Yck" firstAttribute="leading" secondItem="a02-is-Gmr" secondAttribute="leading" id="Qjq-8s-oVy"/>
-                                                    <constraint firstItem="aWV-Ec-Yck" firstAttribute="top" secondItem="a02-is-Gmr" secondAttribute="top" id="gxX-aq-6fv"/>
-                                                </constraints>
-                                            </stackView>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TeamMemberSummaryCell" rowHeight="58" id="5hX-ZS-3s4">
+                                                        <rect key="frame" x="0.0" y="50" width="393" height="58"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5hX-ZS-3s4" id="NQx-2Y-lhU">
+                                                            <rect key="frame" x="0.0" y="0.0" width="393" height="58"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </tableViewCellContentView>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                            </tableView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="a02-is-Gmr" firstAttribute="top" secondItem="aRj-2b-Vbt" secondAttribute="top" id="7Ty-SW-j9P"/>
-                                            <constraint firstAttribute="bottom" secondItem="a02-is-Gmr" secondAttribute="bottom" id="LDM-ZT-QiP"/>
-                                            <constraint firstItem="a02-is-Gmr" firstAttribute="leading" secondItem="aRj-2b-Vbt" secondAttribute="leading" id="gF6-H4-2wn"/>
-                                            <constraint firstAttribute="trailing" secondItem="a02-is-Gmr" secondAttribute="trailing" id="owO-oK-PVu"/>
+                                            <constraint firstItem="BXl-aB-zkf" firstAttribute="top" secondItem="aRj-2b-Vbt" secondAttribute="top" id="78W-Pe-Een"/>
+                                            <constraint firstItem="BXl-aB-zkf" firstAttribute="leading" secondItem="aRj-2b-Vbt" secondAttribute="leading" id="7lN-E0-Ud3"/>
+                                            <constraint firstAttribute="bottom" secondItem="BXl-aB-zkf" secondAttribute="bottom" id="MP9-gG-aeg"/>
+                                            <constraint firstAttribute="trailing" secondItem="BXl-aB-zkf" secondAttribute="trailing" id="NDF-Xd-bLa"/>
                                         </constraints>
                                     </view>
                                 </subviews>

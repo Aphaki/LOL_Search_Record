@@ -255,52 +255,56 @@ extension MatchDetailVC: UITableViewDataSource {
         
         return cell
     }
-    
-    
-}
-
-extension MatchDetailVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let matchInfo = matchInfo else { return nil }
         guard let header = teamTableA.dequeueReusableHeaderFooterView(withIdentifier: "ResultTableHeaderView") as? ResultTableHeaderView else { fatalError("MatchDetailVC - header error") }
+        
         let blueTeamInfo = matchInfo.info.teams[0]
         let redTeamInfo = matchInfo.info.teams[1]
         switch section {
         case 0:
-            header.backgroundColor = .blue
+            
+            let backgroundView = UIView(frame: header.bounds)
+            backgroundView.backgroundColor = .blue
+            header.backgroundView = backgroundView
             if blueTeamInfo.win {
                 header.resultLabel.text = "승리"
             } else {
                 header.resultLabel.text = "패배"
             }
             header.resultLabel.textColor = UIColor.theme.pureWhite
-            header.teamLabel.text = "BLUE팀"
+            header.teamLabel.text = "(BLUE팀)"
             
             let blueTeamMembers = self.blueTeamMember
             let blueTeamKDA = returnedKDA(teamMembers: blueTeamMembers)
             
             header.teamKills.text = blueTeamKDA.0.intToString()
             header.teamDeaths.text = blueTeamKDA.1.intToString()
+            header.teamDeaths.textColor = .red
             header.teamAssist.text = blueTeamKDA.2.intToString()
             header.teamDragon.text = blueTeamInfo.objectives.dragon.kills.intToString()
             header.teambarron.text = blueTeamInfo.objectives.baron.kills.intToString()
             header.teamTower.text = blueTeamInfo.objectives.tower.kills.intToString()
             return header
         default:
-            header.backgroundColor = .red
+//            header.backgroundView?.backgroundColor = .blue
+            let backgroundView = UIView(frame: header.bounds)
+            backgroundView.backgroundColor = .systemPink
+            header.backgroundView = backgroundView
             if redTeamInfo.win {
                 header.resultLabel.text = "승리"
             } else {
                 header.resultLabel.text = "패배"
             }
             header.resultLabel.textColor = UIColor.theme.pureWhite
-            header.teamLabel.text = "RED팀"
+            header.teamLabel.text = "(RED팀)"
             
             let redTeamMembers = self.redTeamMember
             let redTeamKDA = returnedKDA(teamMembers: redTeamMembers)
             
             header.teamKills.text = redTeamKDA.0.intToString()
             header.teamDeaths.text = redTeamKDA.1.intToString()
+            header.teamDeaths.textColor = .red
             header.teamAssist.text = redTeamKDA.2.intToString()
             header.teamDragon.text = redTeamInfo.objectives.dragon.kills.intToString()
             header.teambarron.text = redTeamInfo.objectives.baron.kills.intToString()
@@ -310,9 +314,16 @@ extension MatchDetailVC: UITableViewDelegate {
         }
         
     }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
+    
+    
+}
+
+extension MatchDetailVC: UITableViewDelegate {
+    
+    
+    
     
 }
