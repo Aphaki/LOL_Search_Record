@@ -12,7 +12,7 @@ class MainVM {
 //    private(set) var searchedDetailInfo: DetailSummonerInfo?
     private(set) var searchedSummonersInfo: [DetailSummonerInfo] = []
     
-    private(set) var urlBaseHead: UrlHeadPoint = .kr
+//    private(set) var urlBaseHead: UrlHeadPoint = .kr
     
     private var service = Service()
     

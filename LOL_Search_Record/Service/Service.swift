@@ -10,9 +10,7 @@ import Alamofire
 
 
 class Service {
-    
-    var delegate: ServiceDelegate?
-    
+        
     // SUMMONER-V4
     func requestSummonerInfo(urlBaseHead: UrlHeadPoint, name: String) async throws -> SummonerInfo {
         try await NetworkManager.shared.requestSummonerInfo(urlBaseHead: urlBaseHead, name: name)
@@ -39,9 +37,7 @@ class Service {
     
     func saveSearchedSummonerDetail(urlBase: UrlHeadPoint, name: String) async throws -> DetailSummonerInfo{
         let searchedSummonerDetail = try await fetchAndChangeToDetail(urlBase: urlBase, name: name)
-        await MainActor.run {
-            delegate?.dataTaskSuccess(returnedData: searchedSummonerDetail)
-        }
+        
         return searchedSummonerDetail
     }
     
@@ -241,8 +237,4 @@ class Service {
         }
         return (blueTeamMembers, redTeamMembers)
     }
-}
-
-protocol ServiceDelegate {
-    func dataTaskSuccess(returnedData: DetailSummonerInfo)
 }

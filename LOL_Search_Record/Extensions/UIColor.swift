@@ -17,4 +17,9 @@ struct MyColor {
     let pureWhite = UIColor(named: "PureWhite")
     let teamRed = UIColor(named: "TeamRed")
     let teamBlue = UIColor(named: "TeamBlue")
+    let myYellow = UIColor(named: "MyYellow")
+    let linecolor = UIColor(named: "Linecolor")
+    let lose = UIColor(named: "Lose")
+    let mygray = UIColor(named: "Mygray")
+    let win = UIColor(named: "Win")
 }

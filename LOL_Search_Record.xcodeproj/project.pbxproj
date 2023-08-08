@@ -11,6 +11,7 @@
 		7F14C0EB2A7B9C9700370671 /* TeamMemberSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7F14C0E92A7B9C9700370671 /* TeamMemberSummaryCell.xib */; };
 		7F1C986A2A61145200E00A08 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1C98692A61145200E00A08 /* String.swift */; };
 		7F1C986C2A61217100E00A08 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1C986B2A61217100E00A08 /* Int.swift */; };
+		7F5776EE2A82901400150A8D /* SummonerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5776ED2A82901400150A8D /* SummonerModel.swift */; };
 		7F622BF82A69F6C300B2CBDA /* summoner.json in Resources */ = {isa = PBXBuildFile; fileRef = 7F622BF72A69F6C300B2CBDA /* summoner.json */; };
 		7F622BFA2A69F72200B2CBDA /* DictionaryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F622BF92A69F72200B2CBDA /* DictionaryStore.swift */; };
 		7F622BFC2A69F7F200B2CBDA /* SummonerSpells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F622BFB2A69F7F200B2CBDA /* SummonerSpells.swift */; };
@@ -20,6 +21,10 @@
 		7F6555432A45A5B10028AE52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6555412A45A5B10028AE52 /* Main.storyboard */; };
 		7F6555452A45A5B20028AE52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F6555442A45A5B20028AE52 /* Assets.xcassets */; };
 		7F6555482A45A5B20028AE52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6555462A45A5B20028AE52 /* LaunchScreen.storyboard */; };
+		7F743DF12A8230E000A7A625 /* SummonerContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7F743DEF2A8230E000A7A625 /* SummonerContainer.xcdatamodeld */; };
+		7F743DF32A82766100A7A625 /* GangwonEduPowerExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7F743DF22A82766100A7A625 /* GangwonEduPowerExtraBold.otf */; };
+		7F743DF52A8276B400A7A625 /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7F743DF42A8276B400A7A625 /* NotoSansKR-Bold.otf */; };
+		7F743DF72A82774F00A7A625 /* NotoSansKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7F743DF62A82774F00A7A625 /* NotoSansKR-Regular.otf */; };
 		7F8510522A6FD8BE001B39C6 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8510512A6FD8BE001B39C6 /* Double.swift */; };
 		7F8510542A6FE0A5001B39C6 /* JsonManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F8510532A6FE0A5001B39C6 /* JsonManager.swift */; };
 		7F8510562A707C5B001B39C6 /* queueId.json in Resources */ = {isa = PBXBuildFile; fileRef = 7F8510552A707C5B001B39C6 /* queueId.json */; };
@@ -62,6 +67,7 @@
 		7F14C0E92A7B9C9700370671 /* TeamMemberSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamMemberSummaryCell.xib; sourceTree = "<group>"; };
 		7F1C98692A61145200E00A08 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		7F1C986B2A61217100E00A08 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
+		7F5776ED2A82901400150A8D /* SummonerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerModel.swift; sourceTree = "<group>"; };
 		7F622BF72A69F6C300B2CBDA /* summoner.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = summoner.json; sourceTree = "<group>"; };
 		7F622BF92A69F72200B2CBDA /* DictionaryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryStore.swift; sourceTree = "<group>"; };
 		7F622BFB2A69F7F200B2CBDA /* SummonerSpells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummonerSpells.swift; sourceTree = "<group>"; };
@@ -73,6 +79,10 @@
 		7F6555442A45A5B20028AE52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F6555472A45A5B20028AE52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F6555492A45A5B20028AE52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F743DF02A8230E000A7A625 /* SummonerContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SummonerContainer.xcdatamodel; sourceTree = "<group>"; };
+		7F743DF22A82766100A7A625 /* GangwonEduPowerExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GangwonEduPowerExtraBold.otf; sourceTree = "<group>"; };
+		7F743DF42A8276B400A7A625 /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
+		7F743DF62A82774F00A7A625 /* NotoSansKR-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.otf"; sourceTree = "<group>"; };
 		7F8510512A6FD8BE001B39C6 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		7F8510532A6FE0A5001B39C6 /* JsonManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonManager.swift; sourceTree = "<group>"; };
 		7F8510552A707C5B001B39C6 /* queueId.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = queueId.json; sourceTree = "<group>"; };
@@ -209,6 +219,8 @@
 			isa = PBXGroup;
 			children = (
 				7FC8AEAF2A710B2B00DD8820 /* CoreDataService.swift */,
+				7F743DEF2A8230E000A7A625 /* SummonerContainer.xcdatamodeld */,
+				7F5776ED2A82901400150A8D /* SummonerModel.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -283,6 +295,9 @@
 		7FFC6E8B2A498FD100565579 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				7F743DF62A82774F00A7A625 /* NotoSansKR-Regular.otf */,
+				7F743DF42A8276B400A7A625 /* NotoSansKR-Bold.otf */,
+				7F743DF22A82766100A7A625 /* GangwonEduPowerExtraBold.otf */,
 				7FFC6E8C2A498FE000565579 /* Caprasimo-Regular.ttf */,
 			);
 			path = Font;
@@ -353,14 +368,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F14C0EB2A7B9C9700370671 /* TeamMemberSummaryCell.xib in Resources */,
+				7F743DF72A82774F00A7A625 /* NotoSansKR-Regular.otf in Resources */,
 				7FC372412A56BD1A0045ED4D /* MatchSummaryCell.xib in Resources */,
 				7F6555482A45A5B20028AE52 /* LaunchScreen.storyboard in Resources */,
 				7F6555452A45A5B20028AE52 /* Assets.xcassets in Resources */,
 				7F622BF82A69F6C300B2CBDA /* summoner.json in Resources */,
 				7FF36F2C2A7E94C000898036 /* ResultTableHeaderView.xib in Resources */,
+				7F743DF32A82766100A7A625 /* GangwonEduPowerExtraBold.otf in Resources */,
 				7F6555432A45A5B10028AE52 /* Main.storyboard in Resources */,
 				7FFC6E8D2A498FE000565579 /* Caprasimo-Regular.ttf in Resources */,
 				7F8510562A707C5B001B39C6 /* queueId.json in Resources */,
+				7F743DF52A8276B400A7A625 /* NotoSansKR-Bold.otf in Resources */,
 				7FA94E122A6E8D5600491FB7 /* SearchedSummonerCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,6 +396,7 @@
 				7F6555402A45A5B10028AE52 /* MainVC.swift in Sources */,
 				7FC986C42A52C92000F8F3C7 /* MainVM.swift in Sources */,
 				7FAD0CC82A67AC7C00A1A0C1 /* SelectLocationVC.swift in Sources */,
+				7F5776EE2A82901400150A8D /* SummonerModel.swift in Sources */,
 				7FC986DD2A52D37400F8F3C7 /* ApiLogger.swift in Sources */,
 				7F9433FA2A5B9CC8007F8E7D /* Router.swift in Sources */,
 				7FC986CD2A52CCF200F8F3C7 /* MatchInfo.swift in Sources */,
@@ -389,6 +408,7 @@
 				7FEC5C042A694FC2000186A7 /* ImageUrlRouter.swift in Sources */,
 				7F9433FC2A5BD5AF007F8E7D /* LocalFileManager.swift in Sources */,
 				7FF36F282A7E945100898036 /* ResultTableHeaderView.swift in Sources */,
+				7F743DF12A8230E000A7A625 /* SummonerContainer.xcdatamodeld in Sources */,
 				7F65553C2A45A5B10028AE52 /* AppDelegate.swift in Sources */,
 				7FF36F262A7E54EC00898036 /* UIColor.swift in Sources */,
 				7F870EBC2A5EA38000E0AE94 /* SummonerVC.swift in Sources */,
@@ -645,6 +665,19 @@
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		7F743DEF2A8230E000A7A625 /* SummonerContainer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7F743DF02A8230E000A7A625 /* SummonerContainer.xcdatamodel */,
+			);
+			currentVersion = 7F743DF02A8230E000A7A625 /* SummonerContainer.xcdatamodel */;
+			path = SummonerContainer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7F6555302A45A5B10028AE52 /* Project object */;
 }

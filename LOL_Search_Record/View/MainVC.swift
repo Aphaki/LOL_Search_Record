@@ -15,9 +15,12 @@ class MainVC: UIViewController {
     
     @IBOutlet weak var location: UIBarButtonItem!
     
+    var indicaterView: UIActivityIndicatorView = UIActivityIndicatorView(style: .large)
+    
     private var vm = MainVM()
     
     private var searchedSummonerInfos: [DetailSummonerInfo] = []
+    var networkManager = NetworkManager.shared
     
     var urlHead: UrlHeadPoint = .kr
     
@@ -25,11 +28,15 @@ class MainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.summonerSearchBar.delegate = self
+        self.summonerSearchBar.searchTextField.backgroundColor = UIColor.theme.linecolor
         self.searchedSummoners.dataSource = self
         self.searchedSummoners.delegate = self
+        self.networkManager.delegate = self
+        
         // NIB 등록
         let nib = UINib(nibName: "SearchedSummonerCell", bundle: nil)
         searchedSummoners.register(nib, forCellReuseIdentifier: "SearchedSummonerCell")
+        
         // UISearchBar에서 키보드를 내리지 않도록 합니다.
         let searchBarTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleSearchBarTap))
         searchBarTapGesture.delegate = self
@@ -70,7 +77,7 @@ class MainVC: UIViewController {
     }
     
     //MARK: - 로딩뷰
-    func addLoadingView(indicaterView: UIActivityIndicatorView) {
+    func addLoadingView() {
          // 스타일을 .large로 설정
         indicaterView.translatesAutoresizingMaskIntoConstraints = false // 오토레이아웃 설정
 
@@ -107,8 +114,8 @@ extension MainVC: UISearchBarDelegate {
             view.endEditing(true)
             // 로딩뷰 추가
             view.alpha = 0.1
-            let indicaterView = UIActivityIndicatorView(style: .large)
-            addLoadingView(indicaterView: indicaterView)
+//            let indicaterView =
+            addLoadingView()
             // 네트워킹후 결과값 다음뷰에다가 적용
             let result = try await vm.searchSummonerInfo(urlBaseHead: urlHead, name: summonerName)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -177,4 +184,36 @@ extension MainVC: UIGestureRecognizerDelegate {
         }
         return true
     }
+}
+
+extension MainVC: NetworkManagerDelegate {
+    
+    
+    func noSummonerError() {
+        
+        print("MainVC - noSummonerError()")
+        let alertController = UIAlertController(title: "검색어 에러", message: "없는 소환사 입니다", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "확인", style: .cancel) { action in
+            self.view.alpha = 1.0
+            self.indicaterView.removeFromSuperview()
+        }
+        alertController.addAction(alertAction)
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true)
+        }
+    }
+    
+    func noIngameError() {
+        
+    }
+    
+    func isLoading() {
+        
+    }
+    
+    func isLoadingSuccess() {
+        
+    }
+    
+    
 }

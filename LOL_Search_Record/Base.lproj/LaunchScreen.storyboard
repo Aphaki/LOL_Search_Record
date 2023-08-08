@@ -17,8 +17,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CCGG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4X-vF-eTx">
-                                <rect key="frame" x="141.33333333333334" y="395.66666666666669" width="110.66666666666666" height="61"/>
-                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="50"/>
+                                <rect key="frame" x="121.66666666666669" y="371.33333333333331" width="150" height="109.33333333333331"/>
+                                <fontDescription key="fontDescription" name="NotoSansMyanmar-Bold" family="Noto Sans Myanmar" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>

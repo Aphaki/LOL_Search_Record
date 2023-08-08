@@ -29,6 +29,15 @@ class SummonerVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.translatesAutoresizingMaskIntoConstraints = false
+        tierText.backgroundColor = UIColor.theme.myYellow
+        tierText.layer.cornerRadius = 5
+        tierText.clipsToBounds = true
+        
+        tierImg.backgroundColor = UIColor.theme.pureWhite?.withAlphaComponent(0.7)
+        tierImg.layer.cornerRadius = 20
+//        tierImg.clipsToBounds
+//        tierImg.
+        
         // 테이블뷰(데이터소스, 델리겟) + 셀(NIb)
         self.summaryTable.dataSource = self
         self.summaryTable.delegate = self
@@ -93,7 +102,7 @@ extension SummonerVC: UITableViewDataSource {
         guard let cell = summaryTable.dequeueReusableCell(withIdentifier: Constants.cellName.matchSummaryCell.rawValue, for: indexPath) as? MatchSummaryCell else { fatalError("Unable to dequeue MatchSummaryCell") }
         // 승,패 레이블
         cell.winLabel.text = shortInfo.win ? "Win" : "Lose"
-        cell.winLabel.backgroundColor = shortInfo.win ? UIColor.theme.teamBlue?.withAlphaComponent(0.2) : UIColor.theme.teamRed?.withAlphaComponent(0.2)
+        cell.winLabel.backgroundColor = shortInfo.win ? UIColor.theme.win : UIColor.theme.lose
         cell.winLabel.textColor = shortInfo.win ? UIColor.theme.teamBlue : UIColor.theme.teamRed
         // 챔피언 이미지
         let championImgUrl = ImageUrlRouter.champion(name: shortInfo.championName).imgUrl

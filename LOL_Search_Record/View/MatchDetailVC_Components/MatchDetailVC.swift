@@ -45,6 +45,7 @@ class MatchDetailVC: UIViewController {
         teamTableA.register(nib, forCellReuseIdentifier: "TeamMemberSummaryCell")
         teamTableA.register(nibHeader, forHeaderFooterViewReuseIdentifier: "ResultTableHeaderView")
         
+        
         resultsLabelSetting()
 //        teamResultLabelsSetting()
         
@@ -56,12 +57,15 @@ class MatchDetailVC: UIViewController {
         
         if summonerWinBool {
             resultsLable.text = "Win"
-            resultsLable.textColor = .blue
-            resultsLable.backgroundColor = .blue.withAlphaComponent(0.3)
+            resultsLable.textColor = UIColor.theme.teamBlue
+            resultsLable.backgroundColor = UIColor.theme.win
+            view.backgroundColor = UIColor.theme.win
         } else {
             resultsLable.text = "Lose"
-            resultsLable.textColor = .red
-            resultsLable.backgroundColor = .red.withAlphaComponent(0.3)
+            resultsLable.textColor = UIColor.theme.teamRed
+            resultsLable.backgroundColor = UIColor.theme.lose
+            view.backgroundColor = UIColor.theme.lose
+
         }
     }
     
@@ -130,7 +134,7 @@ class MatchDetailVC: UIViewController {
         // KDA
         cell.kill.text = aMember.kills.intToString()
         cell.death.text = aMember.deaths.intToString()
-        cell.death.textColor = .red
+        cell.death.textColor = UIColor.theme.teamRed
         cell.assist.text = aMember.assists.intToString()
         // 아이템 이미지
         let item1Code = aMember.item0.intToString()
@@ -201,7 +205,7 @@ class MatchDetailVC: UIViewController {
             header.resultLabel.text = "패배"
         }
         header.teamKills.text = teamKDA.0.intToString()
-        header.teamDeaths.text = teamKDA.1.intToString()
+        header.teamDeaths.text = teamKDA.1.intToString().plusSlash()
         header.teamAssist.text = teamKDA.2.intToString()
         header.teamDragon.text = teamInfo.objectives.dragon.kills.intToString()
         header.teambarron.text = teamInfo.objectives.baron.kills.intToString()
@@ -250,13 +254,13 @@ extension MatchDetailVC: UITableViewDataSource {
         if indexPath.section == 0 {
             let aMember = blueTeamMember[indexPath.row]
             if aMember.summonerName == summonerInfo.name {
-                cell.backgroundColor = .green
+                cell.backgroundColor = UIColor.theme.myYellow
             }
             settingTableViewData(cell: cell, aMember: aMember)
         } else {
             let aMember = redTeamMember[indexPath.row]
             if aMember.summonerName == summonerInfo.name {
-                cell.backgroundColor = .green
+                cell.backgroundColor = UIColor.theme.myYellow
             }
             settingTableViewData(cell: cell, aMember: aMember)
         }

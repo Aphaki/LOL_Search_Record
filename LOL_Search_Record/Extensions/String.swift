@@ -15,4 +15,7 @@ extension String {
     func toChampionSmallImgUrl() -> String {
         return "https://ddragon.leagueoflegends.com/cdn/\(Constants.dataVersion)/img/champion/\(self).png"
     }
+    func plusSlash() -> String {
+        return "/\(self)/"
+    }
 }
