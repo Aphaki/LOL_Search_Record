@@ -15,4 +15,6 @@ struct MyColor {
     let ccAccentColor = UIColor(named: "CCAccentColor")
     let ccBackgroundColor = UIColor(named: "CCBackgroundColor")
     let pureWhite = UIColor(named: "PureWhite")
+    let teamRed = UIColor(named: "TeamRed")
+    let teamBlue = UIColor(named: "TeamBlue")
 }

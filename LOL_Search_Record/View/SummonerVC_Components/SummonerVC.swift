@@ -28,6 +28,7 @@ class SummonerVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.translatesAutoresizingMaskIntoConstraints = false
         // 테이블뷰(데이터소스, 델리겟) + 셀(NIb)
         self.summaryTable.dataSource = self
         self.summaryTable.delegate = self
@@ -60,6 +61,7 @@ class SummonerVC: UIViewController {
         let urlString = imgName.toProfileiconUrl()
         
         icon.loadImage(from: urlString, folderName: "profileicon", imgName: imgName)
+        icon.layer.cornerRadius = 20
     }
     func loadTierText() {
         guard let summonerInfo = summonerInfo else { return }
@@ -91,8 +93,8 @@ extension SummonerVC: UITableViewDataSource {
         guard let cell = summaryTable.dequeueReusableCell(withIdentifier: Constants.cellName.matchSummaryCell.rawValue, for: indexPath) as? MatchSummaryCell else { fatalError("Unable to dequeue MatchSummaryCell") }
         // 승,패 레이블
         cell.winLabel.text = shortInfo.win ? "Win" : "Lose"
-        cell.winLabel.backgroundColor = shortInfo.win ? .black : .white
-        cell.winLabel.textColor = shortInfo.win ? .white : .black
+        cell.winLabel.backgroundColor = shortInfo.win ? UIColor.theme.teamBlue?.withAlphaComponent(0.2) : UIColor.theme.teamRed?.withAlphaComponent(0.2)
+        cell.winLabel.textColor = shortInfo.win ? UIColor.theme.teamBlue : UIColor.theme.teamRed
         // 챔피언 이미지
         let championImgUrl = ImageUrlRouter.champion(name: shortInfo.championName).imgUrl
         cell.champImg.loadImage(from: championImgUrl, folderName: Constants.folderName.championImgSmall.rawValue, imgName: shortInfo.championName)

@@ -47,5 +47,7 @@ extension UIImageView {
             }
             .resume()
         }
+        
+        self.layer.cornerRadius = 5
     }
 }

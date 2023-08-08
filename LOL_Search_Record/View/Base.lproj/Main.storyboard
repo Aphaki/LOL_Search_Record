@@ -33,7 +33,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CCGG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZ8-Cx-xX7">
                                 <rect key="frame" x="105.66666666666667" y="113" width="181.66666666666663" height="69"/>
                                 <fontDescription key="fontDescription" name="Caprasimo-Regular" family="Caprasimo" pointSize="60"/>
-                                <color key="textColor" name="CCAccentColor"/>
+                                <color key="textColor" systemColor="systemOrangeColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5xm-iT-bR0">
@@ -153,7 +153,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="TDe-Gq-vsL">
-                                <rect key="frame" x="15" y="113" width="198" height="70"/>
+                                <rect key="frame" x="15" y="113" width="363" height="70"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Sb-Vu-auT">
                                         <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
@@ -162,35 +162,30 @@
                                             <constraint firstAttribute="height" constant="70" id="E0w-C0-xiT"/>
                                         </constraints>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Mq0-Rp-VBq">
-                                        <rect key="frame" x="95" y="0.0" width="103" height="70"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Mq0-Rp-VBq">
+                                        <rect key="frame" x="95" y="0.0" width="173" height="70"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PLATINUM 4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KvP-gS-uKf">
-                                                <rect key="frame" x="0.0" y="0.0" width="103" height="12"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="PLATINUM 4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KvP-gS-uKf">
+                                                <rect key="frame" x="0.0" y="0.0" width="66.666666666666671" height="26.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                 <color key="textColor" name="CCAccentColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="OAY-CD-84j">
-                                                <rect key="frame" x="0.0" y="20" width="103" height="50"/>
-                                                <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rPH-oI-l3F">
-                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="KOS-j3-tON"/>
-                                                            <constraint firstAttribute="width" constant="50" id="Uw2-yJ-LHd"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7VQ-uL-Rqt">
-                                                        <rect key="frame" x="58" y="0.0" width="45" height="50"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <color key="textColor" name="CCAccentColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7VQ-uL-Rqt">
+                                                <rect key="frame" x="0.0" y="28.333333333333339" width="46.666666666666664" height="41.666666666666657"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <color key="textColor" name="CCAccentColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                     </stackView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rPH-oI-l3F">
+                                        <rect key="frame" x="293" y="0.0" width="70" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="KOS-j3-tON"/>
+                                            <constraint firstAttribute="width" constant="70" id="Uw2-yJ-LHd"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                             </stackView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="D5t-f5-teO">
@@ -240,6 +235,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="TDe-Gq-vsL" firstAttribute="leading" secondItem="bwB-tJ-YJF" secondAttribute="leading" constant="15" id="CgG-K1-DGi"/>
+                            <constraint firstItem="bwB-tJ-YJF" firstAttribute="trailing" secondItem="TDe-Gq-vsL" secondAttribute="trailing" constant="15" id="TAt-9T-Tg7"/>
                             <constraint firstItem="D5t-f5-teO" firstAttribute="trailing" secondItem="bwB-tJ-YJF" secondAttribute="trailing" id="elo-zn-lyK"/>
                             <constraint firstItem="D5t-f5-teO" firstAttribute="top" secondItem="TDe-Gq-vsL" secondAttribute="bottom" id="fGY-K4-zab"/>
                             <constraint firstAttribute="bottom" secondItem="D5t-f5-teO" secondAttribute="bottom" id="lyv-tH-5m8"/>
@@ -374,6 +370,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
