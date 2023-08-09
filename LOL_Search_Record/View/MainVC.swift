@@ -10,16 +10,15 @@ import UIKit
 class MainVC: UIViewController {
     
     @IBOutlet weak var summonerSearchBar: UISearchBar!
-    
     @IBOutlet weak var searchedSummoners: UITableView!
-    
     @IBOutlet weak var location: UIBarButtonItem!
     
+    let coreDataService = CoreDataService.shared
     var indicaterView: UIActivityIndicatorView = UIActivityIndicatorView(style: .large)
     
     private var vm = MainVM()
     
-    private var searchedSummonerInfos: [DetailSummonerInfo] = []
+    private var searchedSummonerInfos: [SummonerModel] = []
     var networkManager = NetworkManager.shared
     
     var urlHead: UrlHeadPoint = .kr
@@ -27,6 +26,7 @@ class MainVC: UIViewController {
     //MARK: - View life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.searchedSummonerInfos = coreDataService.fetchData()
         self.summonerSearchBar.delegate = self
         self.summonerSearchBar.searchTextField.backgroundColor = UIColor.theme.linecolor
         self.searchedSummoners.dataSource = self
@@ -93,6 +93,24 @@ class MainVC: UIViewController {
 
         indicaterView.startAnimating() // 인디케이터 애니메이션 시작
     }
+    //MARK: -
+    func saveSearchedSummonerData(result: DetailSummonerInfo) {
+        let aModel = SummonerModel(iconImgId: result.icon, name: result.summonerName, tierImgStr: result.tier, tierText: result.tier, rank: result.rank, date: Date())
+        if !searchedSummonerInfos.contains(where: { aSummonerInfo in
+            return aSummonerInfo.name == result.summonerName
+        }) {
+            coreDataService.addEntity(model: aModel)
+            self.searchedSummonerInfos = coreDataService.fetchData()
+        } else {
+            let existSummoner =
+            searchedSummonerInfos.first { aSummonerInfo in
+                return aSummonerInfo.name == result.summonerName
+            }!
+            let newSummoner = SummonerModel(iconImgId: existSummoner.iconImgId, name: existSummoner.name, tierImgStr: existSummoner.tierImgStr, tierText: existSummoner.tierText, rank: existSummoner.rank, date: Date())
+            coreDataService.upDateData(model: existSummoner, newModel: newSummoner)
+            self.searchedSummonerInfos = coreDataService.fetchData()
+        }
+    }
 }
 
 
@@ -122,12 +140,8 @@ extension MainVC: UISearchBarDelegate {
             let summonerVC = storyboard.instantiateViewController(withIdentifier: "SummonerVC") as! SummonerVC
             summonerVC.summonerInfo = result
             // 데이터 저장
-            if !searchedSummonerInfos.contains(where: { aSummonerInfo in
-                return aSummonerInfo.summonerName == result.summonerName
-            }) {
-                self.searchedSummonerInfos.append(result)
-                searchedSummoners.reloadData()
-            }
+            saveSearchedSummonerData(result: result)
+            searchedSummoners.reloadData()
             print("MainVC - searchedSummonerInfos counts : \(searchedSummonerInfos.count)")
             // 로딩뷰 제거
             view.alpha = 1.0
@@ -152,17 +166,17 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
         }
         let aSummonerInfo = searchedSummonerInfos[indexPath.row]
         // 프로필 아이콘
-        let iconCode = aSummonerInfo.icon.intToString()
+        let iconCode = aSummonerInfo.iconImgId.intToString()
         let iconURL = ImageUrlRouter.icon(code: iconCode).imgUrl
         cell.iconImage.loadImage(from: iconURL, folderName: Constants.folderName.icon.rawValue, imgName: iconCode)
         // 소환사 이름
-        let aSummonerName = aSummonerInfo.summonerName
+        let aSummonerName = aSummonerInfo.name
         cell.summonerName.text = aSummonerName
         // 티어 이미지
-        let tierImg = aSummonerInfo.tier
+        let tierImg = aSummonerInfo.tierText
         cell.tierImage.image = UIImage(named: tierImg.lowercased())
         // 티어 텍스트
-        let tierText = "\(aSummonerInfo.tier) \(aSummonerInfo.rank)"
+        let tierText = "\(aSummonerInfo.tierText) \(aSummonerInfo.rank)"
         cell.tierText.text = tierText
         
         return cell

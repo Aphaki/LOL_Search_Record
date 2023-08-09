@@ -7,9 +7,11 @@
 
 import Foundation
 
-struct summonerModel {
+struct SummonerModel {
     let iconImgId: Int
     let name: String
     let tierImgStr: String
     let tierText: String
+    let rank: String
+    let date: Date
 }
