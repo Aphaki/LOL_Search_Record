@@ -88,8 +88,10 @@ class NetworkManager {
         if let response = await dataTask.response.response {
             
             print("NetworkManager - requestMatchInfo() - Status Code: \(response.statusCode), url: \(String(describing: response.url?.debugDescription))")
+            
             if response.statusCode == 429 {
-                dataTask.resume()
+                delegate?.tooManyRequestError()
+//                dataTask.resume()
             }
         } else {
             
@@ -200,6 +202,6 @@ enum NetworkError: Error {
 protocol NetworkManagerDelegate {
     func noSummonerError()
     func noIngameError()
-    func isLoading()
+    func tooManyRequestError()
     func isLoadingSuccess()
 }

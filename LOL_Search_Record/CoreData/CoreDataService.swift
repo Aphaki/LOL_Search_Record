@@ -46,9 +46,10 @@ class CoreDataService {
     // Read
     func fetchData() -> [SummonerModel] {
         let request = NSFetchRequest<SummonerEntity>(entityName: entityName)
+//        request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         do {
             let fetchedCoreData = try persistentContainer.viewContext.fetch(request)
-            let fetchedCoreModels = fetchedCoreData.map {
+            var fetchedCoreModels = fetchedCoreData.map {
                 SummonerModel(iconImgId: Int($0.iconImgId),
                               name: $0.name ?? "",
                               tierImgStr: $0.tierImgStr ?? "",
@@ -56,6 +57,7 @@ class CoreDataService {
                               rank: $0.rank ?? "",
                               date: $0.date ?? Date())
             }
+            fetchedCoreModels.sort { $0.date > $1.date }
             return fetchedCoreModels
         } catch {
             print(error)

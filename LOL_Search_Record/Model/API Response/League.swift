@@ -10,7 +10,8 @@ import Foundation
 
 struct League: Codable, Identifiable {
     var id: String
-    let leagueID, queueType, tier, rank: String
+    let queueType: String
+    let leagueID, tier, rank: String?
     let summonerName: String
     let leaguePoints, wins, losses: Int
     let veteran, inactive, freshBlood, hotStreak: Bool

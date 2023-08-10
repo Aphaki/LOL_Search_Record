@@ -16,7 +16,7 @@ class MainVC: UIViewController {
     let coreDataService = CoreDataService.shared
     var indicaterView: UIActivityIndicatorView = UIActivityIndicatorView(style: .large)
     
-    private var vm = MainVM()
+    private var service = Service()
     
     private var searchedSummonerInfos: [SummonerModel] = []
     var networkManager = NetworkManager.shared
@@ -41,11 +41,16 @@ class MainVC: UIViewController {
         let searchBarTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleSearchBarTap))
         searchBarTapGesture.delegate = self
         summonerSearchBar.addGestureRecognizer(searchBarTapGesture)
-        
+
         // 다른 뷰를 탭했을 때 키보드를 내리도록 합니다.
         let otherTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleOtherTap))
         otherTapGesture.delegate = self
         view.addGestureRecognizer(otherTapGesture)
+        
+        // 테이블뷰셀을 탭했을 때 선택되도록 합니다.
+        let cellTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleCellTap))
+        cellTapGesture.delegate = self
+        searchedSummoners.addGestureRecognizer(cellTapGesture)
         
         // 국가,지역 채택 정보를 받습니다.
         NotificationCenter.default.addObserver(self, selector: #selector(handleDataNotification(_:)), name: NSNotification.Name("UrlHead"), object: nil)
@@ -53,7 +58,7 @@ class MainVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.location.title = urlHead.nationString.uppercased()
+        self.location.title = urlHead.rawValue.uppercased()
     }
     
     
@@ -75,6 +80,13 @@ class MainVC: UIViewController {
     @objc func handleOtherTap(_ gesture: UITapGestureRecognizer) {
         view.endEditing(true) // 키보드를 내립니다.
     }
+    
+    @objc func handleCellTap(_ gesture: UITapGestureRecognizer) {
+        if let indexPath = searchedSummoners.indexPathForRow(at: gesture.location(in: searchedSummoners)) {
+            tableView(searchedSummoners, didSelectRowAt: indexPath)
+        }
+    }
+
     
     //MARK: - 로딩뷰
     func addLoadingView() {
@@ -110,6 +122,7 @@ class MainVC: UIViewController {
             coreDataService.upDateData(model: existSummoner, newModel: newSummoner)
             self.searchedSummonerInfos = coreDataService.fetchData()
         }
+        searchedSummoners.reloadData()
     }
 }
 
@@ -132,10 +145,9 @@ extension MainVC: UISearchBarDelegate {
             view.endEditing(true)
             // 로딩뷰 추가
             view.alpha = 0.1
-//            let indicaterView =
             addLoadingView()
             // 네트워킹후 결과값 다음뷰에다가 적용
-            let result = try await vm.searchSummonerInfo(urlBaseHead: urlHead, name: summonerName)
+            let result = try await service.saveSearchedSummonerDetail(urlBase: urlHead, name: summonerName)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let summonerVC = storyboard.instantiateViewController(withIdentifier: "SummonerVC") as! SummonerVC
             summonerVC.summonerInfo = result
@@ -175,17 +187,63 @@ extension MainVC: UITableViewDataSource, UITableViewDelegate {
         // 티어 이미지
         let tierImg = aSummonerInfo.tierText
         cell.tierImage.image = UIImage(named: tierImg.lowercased())
+        cell.tierImage.backgroundColor = UIColor.theme.pureWhite?.withAlphaComponent(0.7)
+        cell.tierImage.layer.cornerRadius = 5
         // 티어 텍스트
         let tierText = "\(aSummonerInfo.tierText) \(aSummonerInfo.rank)"
         cell.tierText.text = tierText
         
         return cell
     }
-    
-    // Delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        print("selected row : \(indexPath.row)")
+//        searchedSummoners.deselectRow(at: indexPath, animated: false)
+        let aSummonerInfo = searchedSummonerInfos[indexPath.row]
+
+        // 로딩뷰 추가
+        view.alpha = 0.1
+        addLoadingView()
+
+        // 네트워킹후 결과값 다음뷰에다가 적용
+        Task {
+            do {
+                let result = try await service.saveSearchedSummonerDetail(urlBase: urlHead, name: aSummonerInfo.name)
+
+                // 데이터 저장
+                saveSearchedSummonerData(result: result)
+
+                // UI 업데이트를 메인 스레드에서 수행
+                DispatchQueue.main.async {
+                    self.searchedSummoners.reloadData()
+                    print("MainVC - searchedSummonerInfos counts : \(self.searchedSummonerInfos.count)")
+
+                    // 로딩뷰 제거
+                    self.view.alpha = 1.0
+                    self.indicaterView.removeFromSuperview()
+
+                    // 다음뷰 푸쉬
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let summonerVC = storyboard.instantiateViewController(withIdentifier: "SummonerVC") as! SummonerVC
+                    summonerVC.summonerInfo = result
+                    self.navigationController?.pushViewController(summonerVC, animated: true)
+                }
+
+            } catch {
+                // 에러 핸들링
+                DispatchQueue.main.async {
+                    self.view.alpha = 1.0
+                    self.indicaterView.removeFromSuperview()
+                    print("Error: \(error)")
+                }
+            }
+        }
     }
+
+    // 셀 높이
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
+
     
 }
 
@@ -221,8 +279,16 @@ extension MainVC: NetworkManagerDelegate {
         
     }
     
-    func isLoading() {
-        
+    func tooManyRequestError() {
+        let alertController = UIAlertController(title: "요청 에러", message: "짧은 시간에 너무 많은 요청을 했습니다. 잠시후에 다시 시도해주세요.", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "확인", style: .cancel) { action in
+            self.view.alpha = 1.0
+            self.indicaterView.removeFromSuperview()
+        }
+        alertController.addAction(alertAction)
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true)
+        }
     }
     
     func isLoadingSuccess() {

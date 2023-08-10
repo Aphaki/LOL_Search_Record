@@ -57,14 +57,14 @@ class MatchDetailVC: UIViewController {
         
         if summonerWinBool {
             resultsLable.text = "Win"
-            resultsLable.textColor = UIColor.theme.teamBlue
-            resultsLable.backgroundColor = UIColor.theme.win
-            view.backgroundColor = UIColor.theme.win
+            resultsLable.textColor = UIColor.theme.win
+            resultsLable.backgroundColor = UIColor.theme.teamBlue
+            view.backgroundColor = UIColor.theme.teamBlue
         } else {
             resultsLable.text = "Lose"
-            resultsLable.textColor = UIColor.theme.teamRed
-            resultsLable.backgroundColor = UIColor.theme.lose
-            view.backgroundColor = UIColor.theme.lose
+            resultsLable.textColor = UIColor.theme.lose
+            resultsLable.backgroundColor = UIColor.theme.teamRed
+            view.backgroundColor = UIColor.theme.teamRed
 
         }
     }
@@ -300,6 +300,8 @@ extension MatchDetailVC: UITableViewDataSource {
 extension MatchDetailVC: UITableViewDelegate {
     
     
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
     
 }

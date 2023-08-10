@@ -43,15 +43,15 @@
                                 <rect key="frame" x="16" y="248" width="361" height="570"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FjX-Ko-NAq">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FjX-Ko-NAq">
                                         <rect key="frame" x="0.0" y="0.0" width="361" height="570"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchedSummonerCell" id="bfb-3w-AWB">
-                                                <rect key="frame" x="0.0" y="50" width="361" height="43.666667938232422"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchedSummonerCell" rowHeight="50" id="bfb-3w-AWB">
+                                                <rect key="frame" x="0.0" y="50" width="361" height="50"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bfb-3w-AWB" id="RUR-hX-xBM">
-                                                    <rect key="frame" x="0.0" y="0.0" width="361" height="43.666667938232422"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="361" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
@@ -163,13 +163,13 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Epp-Ht-S4i" userLabel="RankAndName">
-                                <rect key="frame" x="90" y="113.66666666666666" width="75.333333333333314" height="68.666666666666657"/>
+                                <rect key="frame" x="90" y="113.66666666666666" width="100" height="68.666666666666657"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="PLATINUM 4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KvP-gS-uKf">
-                                        <rect key="frame" x="0.0" y="0.0" width="75" height="20"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="20"/>
                                         <color key="backgroundColor" name="MyYellow"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="75" id="0n2-A1-wSb"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="0n2-A1-wSb"/>
                                             <constraint firstAttribute="height" constant="20" id="Wwr-7u-8Fe"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="GangwonEduPowerExtraBold" family="GangwonEduPower" pointSize="11"/>
@@ -186,7 +186,7 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rPH-oI-l3F">
-                                <rect key="frame" x="313" y="113" width="70" height="70"/>
+                                <rect key="frame" x="293" y="113" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="KOS-j3-tON"/>
                                     <constraint firstAttribute="width" constant="70" id="Uw2-yJ-LHd"/>
@@ -199,16 +199,16 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PBm-HS-8C7" userLabel="Container View">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="670"/>
                                         <subviews>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="jAB-ZL-xdu">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" id="jAB-ZL-xdu">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="670"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <prototypes>
-                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MatchSummaryCell" rowHeight="43" id="pqx-1k-5jE">
-                                                        <rect key="frame" x="0.0" y="55.333332061767578" width="393" height="43"/>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MatchSummaryCell" rowHeight="50" id="pqx-1k-5jE">
+                                                        <rect key="frame" x="0.0" y="50" width="393" height="50"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pqx-1k-5jE" id="Hzv-dP-ujo">
-                                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </tableViewCellContentView>
                                                     </tableViewCell>
@@ -242,7 +242,7 @@
                             <constraint firstItem="Epp-Ht-S4i" firstAttribute="centerY" secondItem="5Sb-Vu-auT" secondAttribute="centerY" id="FIm-IR-VCs"/>
                             <constraint firstItem="rPH-oI-l3F" firstAttribute="centerY" secondItem="5Sb-Vu-auT" secondAttribute="centerY" id="Udg-lH-xHP"/>
                             <constraint firstItem="D5t-f5-teO" firstAttribute="trailing" secondItem="bwB-tJ-YJF" secondAttribute="trailing" id="elo-zn-lyK"/>
-                            <constraint firstItem="bwB-tJ-YJF" firstAttribute="trailing" secondItem="rPH-oI-l3F" secondAttribute="trailing" constant="10" id="f1L-m1-khJ"/>
+                            <constraint firstItem="bwB-tJ-YJF" firstAttribute="trailing" secondItem="rPH-oI-l3F" secondAttribute="trailing" constant="30" id="f1L-m1-khJ"/>
                             <constraint firstItem="Epp-Ht-S4i" firstAttribute="leading" secondItem="5Sb-Vu-auT" secondAttribute="trailing" constant="10" id="gjB-mS-6dD"/>
                             <constraint firstAttribute="bottom" secondItem="D5t-f5-teO" secondAttribute="bottom" id="lyv-tH-5m8"/>
                             <constraint firstItem="D5t-f5-teO" firstAttribute="leading" secondItem="bwB-tJ-YJF" secondAttribute="leading" id="olZ-6W-RXW"/>
@@ -288,9 +288,9 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aRj-2b-Vbt" userLabel="ViewContainer">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="684"/>
                                         <subviews>
-                                            <tableView clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="BXl-aB-zkf">
+                                            <tableView clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="BXl-aB-zkf">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="684"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TeamMemberSummaryCell" rowHeight="58" id="5hX-ZS-3s4">
                                                         <rect key="frame" x="0.0" y="50" width="393" height="58"/>

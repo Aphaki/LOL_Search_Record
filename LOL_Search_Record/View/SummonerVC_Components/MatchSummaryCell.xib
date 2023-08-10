@@ -11,12 +11,6 @@
         <array key="GangwonEduPowerExtraBold.otf">
             <string>GangwonEduPowerExtraBold</string>
         </array>
-        <array key="NotoSansKR-Bold.otf">
-            <string>NotoSansKR-Bold</string>
-        </array>
-        <array key="NotoSansKR-Regular.otf">
-            <string>NotoSansKR-Regular</string>
-        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -32,7 +26,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="40" height="111"/>
                         <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="J5r-lm-kag"/>
                             <constraint firstAttribute="width" constant="40" id="yjL-sT-iMr"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="GangwonEduPowerExtraBold" family="GangwonEduPower" pointSize="11"/>
@@ -40,22 +33,22 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Z0O-D9-BIe">
-                        <rect key="frame" x="301" y="25" width="49" height="61"/>
+                        <rect key="frame" x="296.33333333333331" y="32.666666666666664" width="43.666666666666686" height="45.999999999999993"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1시간전" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DHi-Ay-Vxs">
-                                <rect key="frame" x="0.0" y="0.0" width="49" height="17"/>
-                                <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="11"/>
+                                <rect key="frame" x="0.0" y="0.0" width="43.666666666666664" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="7"/>
                                 <color key="textColor" name="CCAccentColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[38:33]" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mof-wS-9rJ">
-                                <rect key="frame" x="0.0" y="22" width="49" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="0.0" y="17" width="43.666666666666664" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" name="CCAccentColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rank Solo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fAn-Zx-kzN">
-                                <rect key="frame" x="0.0" y="44" width="49" height="17"/>
+                                <rect key="frame" x="0.0" y="34.000000000000007" width="43.666666666666664" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                 <color key="textColor" name="CCAccentColor"/>
                                 <nil key="highlightedColor"/>
@@ -75,54 +68,46 @@
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="4nE-2n-wOa" userLabel="Spells">
-                        <rect key="frame" x="100" y="10.666666666666664" width="20" height="44"/>
+                        <rect key="frame" x="100" y="10.666666666666664" width="22.666666666666671" height="44"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z16-B6-SdL">
-                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="QHX-6W-RZm"/>
-                                    <constraint firstAttribute="height" constant="20" id="l23-2m-fdp"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="0.0" width="22.666666666666668" height="20"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Umo-rV-hG8">
-                                <rect key="frame" x="0.0" y="24" width="20" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="cX6-DU-KSC"/>
-                                    <constraint firstAttribute="width" constant="20" id="rS7-cZ-ZVw"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="24" width="22.666666666666668" height="20"/>
                             </imageView>
                         </subviews>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="zq4-nR-uS9" userLabel="KDA">
-                        <rect key="frame" x="124.99999999999999" y="20" width="135.66666666666663" height="25.333333333333329"/>
+                        <rect key="frame" x="127.66666666666666" y="22.333333333333336" width="127.66666666666666" height="20.333333333333336"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kill" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0w-nq-EbQ">
-                                <rect key="frame" x="0.0" y="0.0" width="25.666666666666668" height="25.333333333333332"/>
-                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="17"/>
+                                <rect key="frame" x="0.0" y="0.0" width="22.333333333333332" height="20.333333333333332"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Skb-JZ-5am">
-                                <rect key="frame" x="26.666666666666657" y="0.0" width="6.6666666666666643" height="25.333333333333332"/>
-                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="17"/>
+                                <rect key="frame" x="23.333333333333329" y="0.0" width="5" height="20.333333333333332"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Death" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="snV-e5-qI0">
-                                <rect key="frame" x="34.333333333333343" y="0.0" width="47" height="25.333333333333332"/>
-                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="17"/>
+                                <rect key="frame" x="29.333333333333325" y="0.0" width="45.666666666666657" height="20.333333333333332"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" name="TeamRed"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIY-RD-ONP">
-                                <rect key="frame" x="82.333333333333343" y="0.0" width="6.6666666666666714" height="25.333333333333332"/>
-                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="17"/>
+                                <rect key="frame" x="75.999999999999986" y="0.0" width="5" height="20.333333333333332"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Assist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3uq-85-5ei">
-                                <rect key="frame" x="90" y="0.0" width="45.666666666666657" height="25.333333333333332"/>
-                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="17"/>
+                                <rect key="frame" x="81.999999999999986" y="0.0" width="45.666666666666671" height="20.333333333333332"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -212,6 +197,7 @@
                     <constraint firstItem="zq4-nR-uS9" firstAttribute="leading" secondItem="4nE-2n-wOa" secondAttribute="trailing" constant="5" id="EJC-wf-W8g"/>
                     <constraint firstItem="zq4-nR-uS9" firstAttribute="centerY" secondItem="V70-Cf-co0" secondAttribute="centerY" id="G9C-aY-Ic3"/>
                     <constraint firstItem="nvV-GO-DVF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="IbX-X5-4Bc"/>
+                    <constraint firstItem="4nE-2n-wOa" firstAttribute="width" secondItem="V70-Cf-co0" secondAttribute="width" multiplier="0.5" id="Qby-5r-4KU"/>
                     <constraint firstItem="ptX-hD-0cJ" firstAttribute="top" secondItem="V70-Cf-co0" secondAttribute="bottom" constant="10" id="Qoa-Wo-6CC"/>
                     <constraint firstItem="V70-Cf-co0" firstAttribute="leading" secondItem="nvV-GO-DVF" secondAttribute="trailing" constant="10" id="Uya-Ce-snH"/>
                     <constraint firstAttribute="bottom" secondItem="nvV-GO-DVF" secondAttribute="bottom" id="WfC-De-JB8"/>
@@ -219,7 +205,7 @@
                     <constraint firstItem="4nE-2n-wOa" firstAttribute="height" secondItem="V70-Cf-co0" secondAttribute="height" multiplier="0.977778" id="pQk-fu-PXE"/>
                     <constraint firstItem="ptX-hD-0cJ" firstAttribute="leading" secondItem="V70-Cf-co0" secondAttribute="leading" id="rYg-XW-7PG"/>
                     <constraint firstItem="4nE-2n-wOa" firstAttribute="leading" secondItem="V70-Cf-co0" secondAttribute="trailing" constant="5" id="rnE-1Z-XM0"/>
-                    <constraint firstAttribute="trailing" secondItem="Z0O-D9-BIe" secondAttribute="trailing" constant="10" id="whh-T1-o7y"/>
+                    <constraint firstAttribute="trailing" secondItem="Z0O-D9-BIe" secondAttribute="trailing" constant="20" id="whh-T1-o7y"/>
                     <constraint firstItem="4nE-2n-wOa" firstAttribute="centerY" secondItem="V70-Cf-co0" secondAttribute="centerY" id="z5e-Fr-1l0"/>
                 </constraints>
             </tableViewCellContentView>
@@ -251,7 +237,7 @@
             <color red="0.10000000149011612" green="0.10000000149011612" blue="0.10000000149011612" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="TeamRed">
-            <color red="0.81960784313725488" green="0.3411764705882353" blue="0.32156862745098042" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.96899998188018799" green="0.34099999070167542" blue="0.34099999070167542" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

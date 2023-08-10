@@ -102,14 +102,14 @@ extension SummonerVC: UITableViewDataSource {
         guard let cell = summaryTable.dequeueReusableCell(withIdentifier: Constants.cellName.matchSummaryCell.rawValue, for: indexPath) as? MatchSummaryCell else { fatalError("Unable to dequeue MatchSummaryCell") }
         // 승,패 레이블
         cell.winLabel.text = shortInfo.win ? "Win" : "Lose"
-        cell.winLabel.backgroundColor = shortInfo.win ? UIColor.theme.win : UIColor.theme.lose
-        cell.winLabel.textColor = shortInfo.win ? UIColor.theme.teamBlue : UIColor.theme.teamRed
+        cell.winLabel.backgroundColor = shortInfo.win ? UIColor.theme.teamBlue : UIColor.theme.teamRed
+        cell.winLabel.textColor = shortInfo.win ? UIColor.theme.win : UIColor.theme.lose
         // 챔피언 이미지
         let championImgUrl = ImageUrlRouter.champion(name: shortInfo.championName).imgUrl
         cell.champImg.loadImage(from: championImgUrl, folderName: Constants.folderName.championImgSmall.rawValue, imgName: shortInfo.championName)
         // 스펠 이미지
-        let spell1ImgUrl = ImageUrlRouter.spell(name: DictionaryStore.shared.spellStore[shortInfo.summoner1ID.intToString()]!).imgUrl
-        let spell2ImgUrl = ImageUrlRouter.spell(name: DictionaryStore.shared.spellStore[shortInfo.summoner2ID.intToString()]!).imgUrl
+        let spell1ImgUrl = ImageUrlRouter.spell(name: DictionaryStore.shared.spellStore[shortInfo.summoner1ID.intToString()] ?? "").imgUrl
+        let spell2ImgUrl = ImageUrlRouter.spell(name: DictionaryStore.shared.spellStore[shortInfo.summoner2ID.intToString()] ?? "").imgUrl
         cell.spellOne.loadImage(from: spell1ImgUrl, folderName: Constants.folderName.spellImg.rawValue, imgName: shortInfo.summoner1ID.intToString())
         cell.spellTwo.loadImage(from: spell2ImgUrl, folderName: Constants.folderName.spellImg.rawValue, imgName: shortInfo.summoner2ID.intToString())
         // KDA
@@ -183,6 +183,9 @@ extension SummonerVC: UITableViewDelegate {
         navigationController?.pushViewController(matchDetailVC, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
 }
 
 //extension SummonerVC: UITableViewDelegate {

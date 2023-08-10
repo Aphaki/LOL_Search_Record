@@ -11,7 +11,8 @@ class SelectLocationVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
 
     @IBOutlet weak var locationPicker: UIPickerView!
     
-    let locations: [String] = ["Brazil", "EUN", "EUW", "JP", "KR", "LA1", "LA2", "OC", "RU", "TR"]
+    let locations: [String] = UrlHeadPoint.allCases.map { $0.rawValue.uppercased() }
+
     
     var urlHeadPoint: UrlHeadPoint?
     
@@ -44,31 +45,32 @@ class SelectLocationVC: UIViewController, UIPickerViewDataSource, UIPickerViewDe
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let selectedLocation = locations[row]
-        switch selectedLocation {
-        case "Brazil":
-            urlHeadPoint = .brOne
-        case "EUN":
-            urlHeadPoint = .eunOne
-        case "EUW":
-            urlHeadPoint = .euwOne
-        case "JP":
-            urlHeadPoint = .jpOne
-        case "KR":
-            urlHeadPoint = .kr
-        case "LA1":
-            urlHeadPoint = .laOne
-        case "LA2":
-            urlHeadPoint = .laTwo
-        case "OC":
-            urlHeadPoint = .ocOne
-        case "RU":
-            urlHeadPoint = .ru
-        case "TR":
-            urlHeadPoint = .tr1
-        default:
-            urlHeadPoint = .kr
-        }
+        let selectedLocation = locations[row].lowercased()
+//        switch selectedLocation {
+//        case "Brazil":
+//            urlHeadPoint = .brazil
+//        case "EUN":
+//            urlHeadPoint = .eun
+//        case "EUW":
+//            urlHeadPoint = .euw
+//        case "JP":
+//            urlHeadPoint = .jp
+//        case "KR":
+//            urlHeadPoint = .kr
+//        case "LA1":
+//            urlHeadPoint = .la
+//        case "LA2":
+//            urlHeadPoint = .la2
+//        case "OC":
+//            urlHeadPoint = .oce
+//        case "RU":
+//            urlHeadPoint = .ru
+//        case "TR":
+//            urlHeadPoint = .tr
+//        default:
+//            urlHeadPoint = .kr
+//        }
+       urlHeadPoint = UrlHeadPoint(rawValue: selectedLocation)
     }
     
 }
