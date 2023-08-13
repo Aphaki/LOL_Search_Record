@@ -19,6 +19,7 @@ class SummonerVC: UIViewController {
     
     var matchIndex = 15
     let addInfoCount = 5
+    var isLoading = false
     
     let networkManager = NetworkManager.shared
     
@@ -191,13 +192,17 @@ extension SummonerVC: UITableViewDataSource {
         return cell
     }
     // 새로고침 화면
-//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        let footer = UIActivityIndicatorView()
-//        footer.startAnimating()
-//        let footerHeight: CGFloat = 50.0
-//        footer.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: footerHeight)
-//        return footer
-//    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footer = UIActivityIndicatorView()
+        footer.startAnimating()
+        let footerHeight: CGFloat = 50.0
+        footer.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: footerHeight)
+        if isLoading {
+            return footer
+        } else {
+            return nil
+        }
+    }
 }
 
 extension SummonerVC: UITableViewDelegate {
@@ -219,9 +224,11 @@ extension SummonerVC: UIScrollViewDelegate {
     
     // 스크롤뷰 끝까지 도달했을때 추가적인 요청
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        print("scrollViewDidEndDecelerating()")
         if scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height) {
-//            summaryTable.tableFooterView?.isHidden = true
             guard let summonerInfo = summonerInfo else { fatalError("SummonerVC - summonerInfo is nil") }
+            isLoading = true
+            summaryTable.reloadData()
             let puuid = summonerInfo.summonerInfo.puuid
             self.matchIndex += 5
             Task {
@@ -242,7 +249,7 @@ extension SummonerVC: UIScrollViewDelegate {
                 await MainActor.run {
                     matchInfos.append(contentsOf: additionalMatchInfos)
                     summonersMatch.append(contentsOf: summonerMatchsArray)
-//                    summaryTable.tableFooterView?.isHidden = false
+                    isLoading = false
                     summaryTable.reloadData()
                 }
             }
