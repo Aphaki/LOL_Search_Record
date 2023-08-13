@@ -201,7 +201,5 @@ enum NetworkError: Error {
 
 protocol NetworkManagerDelegate {
     func noSummonerError()
-    func noIngameError()
     func tooManyRequestError()
-    func isLoadingSuccess()
 }

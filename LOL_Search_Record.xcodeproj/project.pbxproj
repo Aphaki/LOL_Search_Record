@@ -192,7 +192,6 @@
 				7F622BF62A69F6A800B2CBDA /* JSON */,
 				7FC986D32A52D25300F8F3C7 /* Service */,
 				7FC986C52A52CB8A00F8F3C7 /* Model */,
-				7FC986C22A52C8DD00F8F3C7 /* ViewModel */,
 				7F589B322A4D6E4100E972BF /* View */,
 				7F1C98682A61144300E00A08 /* Extensions */,
 				7F6555462A45A5B20028AE52 /* LaunchScreen.storyboard */,
@@ -233,13 +232,6 @@
 				7FF36F2B2A7E94C000898036 /* ResultTableHeaderView.xib */,
 			);
 			path = MatchDetailVC_Components;
-			sourceTree = "<group>";
-		};
-		7FC986C22A52C8DD00F8F3C7 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		7FC986C52A52CB8A00F8F3C7 /* Model */ = {
@@ -586,9 +578,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Maru.LOL-Search-Record";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -614,9 +609,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Maru.LOL-Search-Record";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

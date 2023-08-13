@@ -41,6 +41,7 @@ class Service {
         return searchedSummonerDetail
     }
     
+    
     func fetchAndChangeToDetail(urlBase:UrlHeadPoint, name: String) async throws -> DetailSummonerInfo {
         
         // SUMMONER-V4

@@ -17,13 +17,32 @@ class SummonerVC: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
+    var matchIndex = 15
+    let addInfoCount = 5
+    
+    let networkManager = NetworkManager.shared
+    
     var queueIdInfos: [QueueIDInfo] = []
+    
+    var urlHead: UrlHeadPoint?
     var summonerInfo: DetailSummonerInfo?
+    
     var matchInfos: [MatchInfo] {
-        return summonerInfo?.matchInfos ?? []
+        get {
+            return summonerInfo?.matchInfos ?? []
+        }
+        set(newValue) {
+            summonerInfo?.matchInfos = newValue
+        }
     }
     var summonersMatch: [Participant] {
-        return self.summonerInfo?.mySummonerMatchInfos ?? []
+        get {
+            return self.summonerInfo?.mySummonerMatchInfos ?? []
+        }
+        
+        set(newValue) {
+            summonerInfo?.mySummonerMatchInfos = newValue
+        }
     }
     
     override func viewDidLoad() {
@@ -35,8 +54,8 @@ class SummonerVC: UIViewController {
         
         tierImg.backgroundColor = UIColor.theme.pureWhite?.withAlphaComponent(0.7)
         tierImg.layer.cornerRadius = 20
-//        tierImg.clipsToBounds
-//        tierImg.
+        
+        scrollView.delegate = self
         
         // 테이블뷰(데이터소스, 델리겟) + 셀(NIb)
         self.summaryTable.dataSource = self
@@ -171,6 +190,14 @@ extension SummonerVC: UITableViewDataSource {
         
         return cell
     }
+    // 새로고침 화면
+//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        let footer = UIActivityIndicatorView()
+//        footer.startAnimating()
+//        let footerHeight: CGFloat = 50.0
+//        footer.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: footerHeight)
+//        return footer
+//    }
 }
 
 extension SummonerVC: UITableViewDelegate {
@@ -185,6 +212,41 @@ extension SummonerVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+}
+
+extension SummonerVC: UIScrollViewDelegate {
+    
+    // 스크롤뷰 끝까지 도달했을때 추가적인 요청
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height) {
+//            summaryTable.tableFooterView?.isHidden = true
+            guard let summonerInfo = summonerInfo else { fatalError("SummonerVC - summonerInfo is nil") }
+            let puuid = summonerInfo.summonerInfo.puuid
+            self.matchIndex += 5
+            Task {
+                let additionalMatchIds =
+                try await networkManager.requestMatchList(urlBaseHead: urlHead ?? .kr, puuid: puuid, start: matchIndex, count: addInfoCount)
+                let additionalMatchInfos =
+                try await networkManager.requestMatchInfos(urlBaseHead: urlHead ?? .kr, matchIds: additionalMatchIds)
+                
+                let participantArray =
+                additionalMatchInfos.flatMap { aMatchInfo in
+                    return aMatchInfo.info.participants
+                }
+                let summonerMatchsArray =
+                participantArray.filter { aParticipant in
+                    return aParticipant.summonerName == summonerInfo.summonerName
+                }
+                
+                await MainActor.run {
+                    matchInfos.append(contentsOf: additionalMatchInfos)
+                    summonersMatch.append(contentsOf: summonerMatchsArray)
+//                    summaryTable.tableFooterView?.isHidden = false
+                    summaryTable.reloadData()
+                }
+            }
+        }
     }
 }
 

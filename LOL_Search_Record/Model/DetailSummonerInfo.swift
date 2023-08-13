@@ -22,8 +22,8 @@ struct DetailSummonerInfo: Identifiable {
     let totalKda: Double
     let summonerInfo: SummonerInfo
     let leagueInfos: [League]
-    let matchInfos: [MatchInfo]
-    let mySummonerMatchInfos: [Participant]
+    var matchInfos: [MatchInfo]
+    var mySummonerMatchInfos: [Participant]
     var isBookMark: Bool = false
 }
 

@@ -13,7 +13,7 @@ class MainVC: UIViewController {
     @IBOutlet weak var searchedSummoners: UITableView!
     @IBOutlet weak var location: UIBarButtonItem!
     
-    let coreDataService = CoreDataService.shared
+//    let coreDataService = CoreDataService.shared
     var indicaterView: UIActivityIndicatorView = UIActivityIndicatorView(style: .large)
     
     private var service = Service()
@@ -26,16 +26,16 @@ class MainVC: UIViewController {
     //MARK: - View life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.searchedSummonerInfos = coreDataService.fetchData()
+//        self.searchedSummonerInfos = coreDataService.fetchData()
         self.summonerSearchBar.delegate = self
         self.summonerSearchBar.searchTextField.backgroundColor = UIColor.theme.linecolor
-        self.searchedSummoners.dataSource = self
-        self.searchedSummoners.delegate = self
+//        self.searchedSummoners.dataSource = self
+//        self.searchedSummoners.delegate = self
         self.networkManager.delegate = self
         
         // NIB 등록
-        let nib = UINib(nibName: "SearchedSummonerCell", bundle: nil)
-        searchedSummoners.register(nib, forCellReuseIdentifier: "SearchedSummonerCell")
+//        let nib = UINib(nibName: "SearchedSummonerCell", bundle: nil)
+//        searchedSummoners.register(nib, forCellReuseIdentifier: "SearchedSummonerCell")
         
         // UISearchBar에서 키보드를 내리지 않도록 합니다.
         let searchBarTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleSearchBarTap))
@@ -48,9 +48,9 @@ class MainVC: UIViewController {
         view.addGestureRecognizer(otherTapGesture)
         
         // 테이블뷰셀을 탭했을 때 선택되도록 합니다.
-        let cellTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleCellTap))
-        cellTapGesture.delegate = self
-        searchedSummoners.addGestureRecognizer(cellTapGesture)
+//        let cellTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleCellTap))
+//        cellTapGesture.delegate = self
+//        searchedSummoners.addGestureRecognizer(cellTapGesture)
         
         // 국가,지역 채택 정보를 받습니다.
         NotificationCenter.default.addObserver(self, selector: #selector(handleDataNotification(_:)), name: NSNotification.Name("UrlHead"), object: nil)
@@ -81,11 +81,11 @@ class MainVC: UIViewController {
         view.endEditing(true) // 키보드를 내립니다.
     }
     
-    @objc func handleCellTap(_ gesture: UITapGestureRecognizer) {
-        if let indexPath = searchedSummoners.indexPathForRow(at: gesture.location(in: searchedSummoners)) {
-            tableView(searchedSummoners, didSelectRowAt: indexPath)
-        }
-    }
+//    @objc func handleCellTap(_ gesture: UITapGestureRecognizer) {
+//        if let indexPath = searchedSummoners.indexPathForRow(at: gesture.location(in: searchedSummoners)) {
+//            tableView(searchedSummoners, didSelectRowAt: indexPath)
+//        }
+//    }
 
     
     //MARK: - 로딩뷰
@@ -106,24 +106,24 @@ class MainVC: UIViewController {
         indicaterView.startAnimating() // 인디케이터 애니메이션 시작
     }
     //MARK: -
-    func saveSearchedSummonerData(result: DetailSummonerInfo) {
-        let aModel = SummonerModel(iconImgId: result.icon, name: result.summonerName, tierImgStr: result.tier, tierText: result.tier, rank: result.rank, date: Date())
-        if !searchedSummonerInfos.contains(where: { aSummonerInfo in
-            return aSummonerInfo.name == result.summonerName
-        }) {
-            coreDataService.addEntity(model: aModel)
-            self.searchedSummonerInfos = coreDataService.fetchData()
-        } else {
-            let existSummoner =
-            searchedSummonerInfos.first { aSummonerInfo in
-                return aSummonerInfo.name == result.summonerName
-            }!
-            let newSummoner = SummonerModel(iconImgId: existSummoner.iconImgId, name: existSummoner.name, tierImgStr: existSummoner.tierImgStr, tierText: existSummoner.tierText, rank: existSummoner.rank, date: Date())
-            coreDataService.upDateData(model: existSummoner, newModel: newSummoner)
-            self.searchedSummonerInfos = coreDataService.fetchData()
-        }
-        searchedSummoners.reloadData()
-    }
+//    func saveSearchedSummonerData(result: DetailSummonerInfo) {
+//        let aModel = SummonerModel(iconImgId: result.icon, name: result.summonerName, tierImgStr: result.tier, tierText: result.tier, rank: result.rank, date: Date())
+//        if !searchedSummonerInfos.contains(where: { aSummonerInfo in
+//            return aSummonerInfo.name == result.summonerName
+//        }) {
+//            coreDataService.addEntity(model: aModel)
+//            self.searchedSummonerInfos = coreDataService.fetchData()
+//        } else {
+//            let existSummoner =
+//            searchedSummonerInfos.first { aSummonerInfo in
+//                return aSummonerInfo.name == result.summonerName
+//            }!
+//            let newSummoner = SummonerModel(iconImgId: existSummoner.iconImgId, name: existSummoner.name, tierImgStr: existSummoner.tierImgStr, tierText: existSummoner.tierText, rank: existSummoner.rank, date: Date())
+//            coreDataService.upDateData(model: existSummoner, newModel: newSummoner)
+//            self.searchedSummonerInfos = coreDataService.fetchData()
+//        }
+//        searchedSummoners.reloadData()
+//    }
 }
 
 
@@ -151,10 +151,11 @@ extension MainVC: UISearchBarDelegate {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let summonerVC = storyboard.instantiateViewController(withIdentifier: "SummonerVC") as! SummonerVC
             summonerVC.summonerInfo = result
+            summonerVC.urlHead = self.urlHead
             // 데이터 저장
-            saveSearchedSummonerData(result: result)
-            searchedSummoners.reloadData()
-            print("MainVC - searchedSummonerInfos counts : \(searchedSummonerInfos.count)")
+//            saveSearchedSummonerData(result: result)
+//            searchedSummoners.reloadData()
+//            print("MainVC - searchedSummonerInfos counts : \(searchedSummonerInfos.count)")
             // 로딩뷰 제거
             view.alpha = 1.0
             indicaterView.removeFromSuperview()
@@ -165,87 +166,87 @@ extension MainVC: UISearchBarDelegate {
     }
 }
 
-extension MainVC: UITableViewDataSource, UITableViewDelegate {
-    // Data Source
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return searchedSummonerInfos.count // 셀 갯수
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = searchedSummoners.dequeueReusableCell(withIdentifier: "SearchedSummonerCell", for: indexPath) as? SearchedSummonerCell else {
-            fatalError("MainVC - Unable to dequeue searchedSummonerCell")
-        }
-        let aSummonerInfo = searchedSummonerInfos[indexPath.row]
-        // 프로필 아이콘
-        let iconCode = aSummonerInfo.iconImgId.intToString()
-        let iconURL = ImageUrlRouter.icon(code: iconCode).imgUrl
-        cell.iconImage.loadImage(from: iconURL, folderName: Constants.folderName.icon.rawValue, imgName: iconCode)
-        // 소환사 이름
-        let aSummonerName = aSummonerInfo.name
-        cell.summonerName.text = aSummonerName
-        // 티어 이미지
-        let tierImg = aSummonerInfo.tierText
-        cell.tierImage.image = UIImage(named: tierImg.lowercased())
-        cell.tierImage.backgroundColor = UIColor.theme.pureWhite?.withAlphaComponent(0.7)
-        cell.tierImage.layer.cornerRadius = 5
-        // 티어 텍스트
-        let tierText = "\(aSummonerInfo.tierText) \(aSummonerInfo.rank)"
-        cell.tierText.text = tierText
-        
-        return cell
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected row : \(indexPath.row)")
-//        searchedSummoners.deselectRow(at: indexPath, animated: false)
-        let aSummonerInfo = searchedSummonerInfos[indexPath.row]
-
-        // 로딩뷰 추가
-        view.alpha = 0.1
-        addLoadingView()
-
-        // 네트워킹후 결과값 다음뷰에다가 적용
-        Task {
-            do {
-                let result = try await service.saveSearchedSummonerDetail(urlBase: urlHead, name: aSummonerInfo.name)
-
-                // 데이터 저장
-                saveSearchedSummonerData(result: result)
-
-                // UI 업데이트를 메인 스레드에서 수행
-                DispatchQueue.main.async {
-                    self.searchedSummoners.reloadData()
-                    print("MainVC - searchedSummonerInfos counts : \(self.searchedSummonerInfos.count)")
-
-                    // 로딩뷰 제거
-                    self.view.alpha = 1.0
-                    self.indicaterView.removeFromSuperview()
-
-                    // 다음뷰 푸쉬
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let summonerVC = storyboard.instantiateViewController(withIdentifier: "SummonerVC") as! SummonerVC
-                    summonerVC.summonerInfo = result
-                    self.navigationController?.pushViewController(summonerVC, animated: true)
-                }
-
-            } catch {
-                // 에러 핸들링
-                DispatchQueue.main.async {
-                    self.view.alpha = 1.0
-                    self.indicaterView.removeFromSuperview()
-                    print("Error: \(error)")
-                }
-            }
-        }
-    }
-
-    // 셀 높이
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
-    }
-
-    
-}
+//extension MainVC: UITableViewDataSource, UITableViewDelegate {
+//    // Data Source
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//
+//        return searchedSummonerInfos.count // 셀 갯수
+//    }
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//        guard let cell = searchedSummoners.dequeueReusableCell(withIdentifier: "SearchedSummonerCell", for: indexPath) as? SearchedSummonerCell else {
+//            fatalError("MainVC - Unable to dequeue searchedSummonerCell")
+//        }
+//        let aSummonerInfo = searchedSummonerInfos[indexPath.row]
+//        // 프로필 아이콘
+//        let iconCode = aSummonerInfo.iconImgId.intToString()
+//        let iconURL = ImageUrlRouter.icon(code: iconCode).imgUrl
+//        cell.iconImage.loadImage(from: iconURL, folderName: Constants.folderName.icon.rawValue, imgName: iconCode)
+//        // 소환사 이름
+//        let aSummonerName = aSummonerInfo.name
+//        cell.summonerName.text = aSummonerName
+//        // 티어 이미지
+//        let tierImg = aSummonerInfo.tierText
+//        cell.tierImage.image = UIImage(named: tierImg.lowercased())
+//        cell.tierImage.backgroundColor = UIColor.theme.pureWhite?.withAlphaComponent(0.7)
+//        cell.tierImage.layer.cornerRadius = 5
+//        // 티어 텍스트
+//        let tierText = "\(aSummonerInfo.tierText) \(aSummonerInfo.rank)"
+//        cell.tierText.text = tierText
+//
+//        return cell
+//    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print("selected row : \(indexPath.row)")
+////        searchedSummoners.deselectRow(at: indexPath, animated: false)
+//        let aSummonerInfo = searchedSummonerInfos[indexPath.row]
+//
+//        // 로딩뷰 추가
+//        view.alpha = 0.1
+//        addLoadingView()
+//
+//        // 네트워킹후 결과값 다음뷰에다가 적용
+//        Task {
+//            do {
+//                let result = try await service.saveSearchedSummonerDetail(urlBase: urlHead, name: aSummonerInfo.name)
+//
+//                // 데이터 저장
+////                saveSearchedSummonerData(result: result)
+//
+//                // UI 업데이트를 메인 스레드에서 수행
+//                DispatchQueue.main.async {
+//                    self.searchedSummoners.reloadData()
+//                    print("MainVC - searchedSummonerInfos counts : \(self.searchedSummonerInfos.count)")
+//
+//                    // 로딩뷰 제거
+//                    self.view.alpha = 1.0
+//                    self.indicaterView.removeFromSuperview()
+//
+//                    // 다음뷰 푸쉬
+//                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                    let summonerVC = storyboard.instantiateViewController(withIdentifier: "SummonerVC") as! SummonerVC
+//                    summonerVC.summonerInfo = result
+//                    self.navigationController?.pushViewController(summonerVC, animated: true)
+//                }
+//
+//            } catch {
+//                // 에러 핸들링
+//                DispatchQueue.main.async {
+//                    self.view.alpha = 1.0
+//                    self.indicaterView.removeFromSuperview()
+//                    print("Error: \(error)")
+//                }
+//            }
+//        }
+//    }
+//
+//    // 셀 높이
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 70
+//    }
+//
+//
+//}
 
 extension MainVC: UIGestureRecognizerDelegate {
     
@@ -275,9 +276,6 @@ extension MainVC: NetworkManagerDelegate {
         }
     }
     
-    func noIngameError() {
-        
-    }
     
     func tooManyRequestError() {
         let alertController = UIAlertController(title: "요청 에러", message: "짧은 시간에 너무 많은 요청을 했습니다. 잠시후에 다시 시도해주세요.", preferredStyle: .alert)
@@ -291,9 +289,8 @@ extension MainVC: NetworkManagerDelegate {
         }
     }
     
-    func isLoadingSuccess() {
-        
-    }
+    
     
     
 }
+
