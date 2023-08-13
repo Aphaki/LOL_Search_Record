@@ -10,11 +10,11 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-//    var coreDataService: CoreDataService!
+    var coreDataService: CoreDataService!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//        coreDataService = CoreDataService.shared
-//        _ = coreDataService.persistentContainer
+        coreDataService = CoreDataService.shared
+        _ = coreDataService.persistentContainer
         
         return true
     }
