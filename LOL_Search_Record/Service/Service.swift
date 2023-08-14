@@ -5,9 +5,7 @@
 //  Created by Sy Lee on 2023/07/03.
 //
 
-import Combine
-import Alamofire
-
+import Foundation
 
 class Service {
         

@@ -5,8 +5,6 @@
 //  Created by Sy Lee on 2023/07/10.
 //
 
-import Foundation
-
 // + UIImage
 import UIKit
 
@@ -33,7 +31,7 @@ class NetworkManager {
         do {
             let value = try await dataTask.value
             return value
-        } catch let error {
+        } catch {
             debugPrint(error.localizedDescription)
             throw error
         }
