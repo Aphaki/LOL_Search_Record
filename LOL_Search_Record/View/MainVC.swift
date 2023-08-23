@@ -108,7 +108,7 @@ class MainVC: UIViewController {
 
         indicaterView.startAnimating() // 인디케이터 애니메이션 시작
     }
-    //MARK: -
+    //MARK: - 데이터 저장
     func saveSearchedSummonerData(result: DetailSummonerInfo) {
         let aModel = SummonerModel(iconImgId: result.icon, name: result.summonerName, tierImgStr: result.tier, tierText: result.tier, rank: result.rank, date: Date())
         if !searchedSummonerInfos.contains(where: { aSummonerInfo in
@@ -121,7 +121,7 @@ class MainVC: UIViewController {
             searchedSummonerInfos.first { aSummonerInfo in
                 return aSummonerInfo.name == result.summonerName
             }!
-            let newSummoner = SummonerModel(iconImgId: existSummoner.iconImgId, name: existSummoner.name, tierImgStr: existSummoner.tierImgStr, tierText: existSummoner.tierText, rank: existSummoner.rank, date: Date())
+            let newSummoner = SummonerModel(iconImgId: result.icon, name: result.summonerName, tierImgStr: result.tier, tierText: result.tier, rank: result.rank, date: Date())
             coreDataService.upDateData(model: existSummoner, newModel: newSummoner)
             self.searchedSummonerInfos = coreDataService.fetchData()
         }
